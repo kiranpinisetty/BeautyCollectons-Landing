@@ -1,13 +1,21 @@
 import React from 'react';
-import { Box, Typography, Button, Container } from '@mui/material';
+import { Box, Typography, Button, Container, Stack } from '@mui/material';
+import { useNavigate, useLocation } from 'react-router-dom';
 import logo from '../assets/BCLogo.png';
 import { BUSINESS_INFO } from '../data/constants';
 
 const Header = () => {
-  const scrollToSection = (id) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const handleNavClick = (sectionId) => {
+    if (location.pathname !== '/') {
+      navigate('/', { state: { scrollTo: sectionId } });
+    } else {
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
     }
   };
 
@@ -18,10 +26,10 @@ const Header = () => {
         position: 'sticky',
         top: 0,
         zIndex: 1100,
-        backgroundColor: '#000000',
-        color: '#ffffff',
-        padding: '12px 0',
-        borderBottom: '1px solid #333333',
+        backgroundColor: 'rgba(10, 10, 10, 0.85)',
+        backdropFilter: 'blur(16px)',
+        borderBottom: '1px solid rgba(201, 168, 76, 0.2)',
+        padding: '14px 0',
       }}
     >
       <Container maxWidth="lg">
@@ -40,7 +48,7 @@ const Header = () => {
               gap: 2,
               cursor: 'pointer',
             }}
-            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            onClick={() => navigate('/')}
           >
             <Box
               component="img"
@@ -51,43 +59,73 @@ const Header = () => {
                 height: 44,
                 borderRadius: '50%',
                 objectFit: 'cover',
-                border: '1px solid #333333',
+                border: '2px solid #c9a84c',
+                boxShadow: '0 0 12px rgba(201, 168, 76, 0.4)',
               }}
             />
             <Typography
               variant="h6"
               sx={{
-                fontWeight: 700,
-                fontSize: { xs: '14px', sm: '16px' },
-                letterSpacing: '0.5px',
+                fontWeight: 800,
+                fontSize: { xs: '13px', sm: '16px' },
+                letterSpacing: '1px',
                 textTransform: 'uppercase',
-                color: '#ffffff',
+                background: 'linear-gradient(135deg, #e8cc7a 0%, #c9a84c 100%)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
               }}
             >
               {BUSINESS_INFO.name}
             </Typography>
           </Box>
 
-          {/* Contact Action Button */}
-          <Button
-            variant="contained"
-            onClick={() => scrollToSection('contact-section')}
-            sx={{
-              backgroundColor: '#ffffff',
-              color: '#000000',
-              fontWeight: 700,
-              fontSize: '12px',
-              padding: '8px 24px',
-              borderRadius: '3px',
-              border: '1px solid #ffffff',
-              '&:hover': {
-                backgroundColor: '#e6e6e6',
+          {/* Nav Actions */}
+          <Stack direction="row" spacing={1.5} alignItems="center">
+            {/* BRANDS Button */}
+            <Button
+              variant={location.pathname === '/brands' ? 'contained' : 'outlined'}
+              onClick={() => navigate('/brands')}
+              sx={{
+                backgroundColor: location.pathname === '/brands' ? '#c9a84c' : 'transparent',
+                color: location.pathname === '/brands' ? '#000000' : '#c9a84c',
+                borderColor: '#c9a84c',
+                fontWeight: 700,
+                fontSize: '12px',
+                padding: '8px 20px',
+                borderRadius: '4px',
+                letterSpacing: '0.8px',
+                '&:hover': {
+                  backgroundColor: '#e8cc7a',
+                  color: '#000000',
+                  borderColor: '#e8cc7a',
+                  boxShadow: '0 0 15px rgba(201, 168, 76, 0.5)',
+                },
+              }}
+            >
+              BRANDS
+            </Button>
+
+            {/* CONTACT Button */}
+            <Button
+              variant="contained"
+              onClick={() => handleNavClick('contact-section')}
+              sx={{
+                backgroundColor: '#ffffff',
                 color: '#000000',
-              },
-            }}
-          >
-            CONTACT
-          </Button>
+                fontWeight: 700,
+                fontSize: '12px',
+                padding: '8px 20px',
+                borderRadius: '4px',
+                letterSpacing: '0.8px',
+                '&:hover': {
+                  backgroundColor: '#e0e0e0',
+                  boxShadow: '0 0 15px rgba(255, 255, 255, 0.3)',
+                },
+              }}
+            >
+              CONTACT
+            </Button>
+          </Stack>
         </Box>
       </Container>
     </Box>
