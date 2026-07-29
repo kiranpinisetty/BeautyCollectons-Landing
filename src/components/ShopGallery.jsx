@@ -1,6 +1,5 @@
 import React from 'react';
 import { Box, Typography, Container } from '@mui/material';
-
 import image1 from '../assets/shop-images/image1.jpg';
 import image2 from '../assets/shop-images/image2.jpg';
 
@@ -17,39 +16,39 @@ const ShopGallery = ({ images = DEFAULT_IMAGES }) => {
       component="section"
       id="shop-gallery"
       sx={{
-        py: { xs: 6, md: 8 },
+        py: { xs: 8, md: 12 },
         px: 2,
-        backgroundColor: 'transparent',
-        borderBottom: '1px solid #f0f0f0',
+        backgroundColor: '#ffffff',
+        borderBottom: '1px solid #e5e7eb',
       }}
     >
       <Container maxWidth="lg">
         <Typography
+          variant="overline"
+          sx={{ color: '#c5a059', fontWeight: 700, letterSpacing: '3px', fontSize: '11px', display: 'block', textAlign: 'center', mb: 1 }}
+        >
+          INSIDE OUR STORE
+        </Typography>
+        <Typography
           variant="h2"
           sx={{
-            fontSize: '24px',
-            fontWeight: 700,
+            fontSize: { xs: '26px', md: '36px' },
+            fontWeight: 800,
             textAlign: 'center',
-            textTransform: 'uppercase',
-            letterSpacing: '-0.5px',
-            marginBottom: { xs: 4, md: 6 },
-            color: '#000000',
+            fontFamily: "'Playfair Display', serif",
+            color: '#111827',
+            mb: { xs: 5, md: 7 },
+            letterSpacing: '-0.3px',
           }}
         >
-          OUR SHOP
+          Our Shop
         </Typography>
 
         <Box
           sx={{
             display: 'grid',
-            gridTemplateColumns: {
-              xs: '1fr',
-              sm: 'repeat(2, 1fr)',
-              lg: 'repeat(4, 1fr)',
-            },
-            gap: '24px',
-            maxWidth: '1200px',
-            margin: '0 auto',
+            gridTemplateColumns: { xs: '1fr 1fr', md: 'repeat(4, 1fr)' },
+            gap: 3,
           }}
         >
           {images.map((item, index) => (
@@ -57,18 +56,18 @@ const ShopGallery = ({ images = DEFAULT_IMAGES }) => {
               key={item.id || index}
               sx={{
                 aspectRatio: '1 / 1',
-                backgroundColor: '#f5f5f5',
-                border: '1px solid #eeeeee',
-                borderRadius: '4px',
+                backgroundColor: '#f9fafb',
+                border: '1px solid #e5e7eb',
+                borderRadius: '8px',
                 overflow: 'hidden',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                position: 'relative',
-                transition: 'transform 0.2s ease, box-shadow 0.2s ease',
+                transition: 'all 0.25s ease',
                 '&:hover': {
-                  transform: 'translateY(-2px)',
-                  boxShadow: '0 4px 12px rgba(0,0,0,0.08)',
+                  transform: 'translateY(-3px)',
+                  boxShadow: '0 8px 24px rgba(0,0,0,0.07)',
+                  borderColor: '#111827',
                 },
               }}
             >
@@ -77,24 +76,12 @@ const ShopGallery = ({ images = DEFAULT_IMAGES }) => {
                   component="img"
                   src={item.path}
                   alt={item.alt || `Shop Image ${index + 1}`}
-                  sx={{
-                    width: '100%',
-                    height: '100%',
-                    objectFit: 'cover',
-                  }}
+                  sx={{ width: '100%', height: '100%', objectFit: 'cover' }}
                 />
               ) : (
-                <Box
-                  sx={{
-                    p: 2,
-                    textAlign: 'center',
-                    color: '#888888',
-                  }}
-                >
-                  <Typography variant="body2" sx={{ fontSize: '12px', fontWeight: 500 }}>
-                    Add your shop photo here
-                  </Typography>
-                </Box>
+                <Typography variant="body2" sx={{ fontSize: '12px', color: '#9ca3af', textAlign: 'center', p: 2 }}>
+                  Add your shop photo here
+                </Typography>
               )}
             </Box>
           ))}

@@ -7,103 +7,86 @@ const CustomerReviews = () => {
     <Box
       component="section"
       sx={{
-        py: { xs: 6, md: 8 },
+        py: { xs: 8, md: 12 },
         px: 2,
-        backgroundColor: '#ffffff',
-        borderBottom: '1px solid #f0f0f0',
+        backgroundColor: '#f9fafb',
+        borderBottom: '1px solid #e5e7eb',
       }}
     >
       <Container maxWidth="lg">
         <Typography
+          variant="overline"
+          sx={{ color: '#c5a059', fontWeight: 700, letterSpacing: '3px', fontSize: '11px', display: 'block', textAlign: 'center', mb: 1 }}
+        >
+          TESTIMONIALS
+        </Typography>
+        <Typography
           variant="h2"
           sx={{
-            fontSize: '24px',
-            fontWeight: 700,
+            fontSize: { xs: '26px', md: '36px' },
+            fontWeight: 800,
             textAlign: 'center',
-            textTransform: 'uppercase',
-            letterSpacing: '-0.5px',
-            marginBottom: { xs: 4, md: 6 },
-            color: '#000000',
+            fontFamily: "'Playfair Display', serif",
+            color: '#111827',
+            mb: { xs: 5, md: 7 },
+            letterSpacing: '-0.3px',
           }}
         >
-          CUSTOMER REVIEWS
+          Customer Reviews
         </Typography>
 
         <Box
           sx={{
             display: 'grid',
-            gridTemplateColumns: {
-              xs: '1fr',
-              sm: 'repeat(2, 1fr)',
-              lg: 'repeat(4, 1fr)',
-            },
-            gap: '24px',
-            maxWidth: '1200px',
-            margin: '0 auto',
+            gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, 1fr)', lg: 'repeat(4, 1fr)' },
+            gap: 3,
           }}
         >
           {REVIEWS.map((review) => (
             <Box
               key={review.id}
               sx={{
-                p: 3,
-                backgroundColor: '#f9f9f9',
-                borderRadius: '4px',
-                border: '1px solid #f0f0f0',
+                p: 4,
+                backgroundColor: '#ffffff',
+                borderRadius: '8px',
+                border: '1px solid #e5e7eb',
                 display: 'flex',
                 flexDirection: 'column',
-                justify: 'space-between',
+                justifyContent: 'space-between',
               }}
             >
               <Box>
-                {/* Rating Stars */}
-                <Typography sx={{ fontSize: '14px', marginBottom: 1.5, color: '#f5a623' }}>
+                <Typography sx={{ fontSize: '14px', mb: 1.5, color: '#c5a059', letterSpacing: '2px' }}>
                   {'★'.repeat(review.rating)}
                 </Typography>
-
-                {/* Review Text */}
                 <Typography
                   variant="body2"
-                  sx={{
-                    fontSize: '12px',
-                    color: '#666666',
-                    fontStyle: 'italic',
-                    marginBottom: 2,
-                    lineHeight: 1.6,
-                  }}
+                  sx={{ fontSize: '13px', color: '#4b5563', fontStyle: 'italic', mb: 3, lineHeight: 1.7 }}
                 >
                   "{review.text}"
                 </Typography>
               </Box>
-
-              {/* Customer Name */}
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                <Typography
-                  variant="subtitle2"
+                <Box
                   sx={{
-                    fontSize: '13px',
-                    fontWeight: 700,
-                    color: '#000000',
+                    width: 36, height: 36, borderRadius: '50%',
+                    backgroundColor: '#111827', display: 'flex',
+                    alignItems: 'center', justifyContent: 'center',
+                    color: '#ffffff', fontWeight: 700, fontSize: '13px', flexShrink: 0,
                   }}
                 >
-                  {review.name}
-                </Typography>
-                {review.verified && (
-                  <Typography
-                    component="span"
-                    sx={{
-                      fontSize: '10px',
-                      backgroundColor: '#e6f4ea',
-                      color: '#137333',
-                      px: 0.8,
-                      py: 0.2,
-                      borderRadius: '2px',
-                      fontWeight: 600,
-                    }}
-                  >
-                    Verified
+                  {review.name.charAt(0)}
+                </Box>
+                <Box>
+                  <Typography variant="subtitle2" sx={{ fontSize: '13px', fontWeight: 700, color: '#111827', lineHeight: 1.3 }}>
+                    {review.name}
                   </Typography>
-                )}
+                  {review.verified && (
+                    <Typography sx={{ fontSize: '10px', color: '#16a34a', fontWeight: 600 }}>
+                      ✓ Verified
+                    </Typography>
+                  )}
+                </Box>
               </Box>
             </Box>
           ))}

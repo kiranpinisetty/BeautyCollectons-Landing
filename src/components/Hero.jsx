@@ -5,12 +5,9 @@ import { BUSINESS_INFO } from '../data/constants';
 
 const Hero = () => {
   const navigate = useNavigate();
-
   const scrollToSection = (id) => {
     const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
+    if (element) element.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
@@ -18,22 +15,22 @@ const Hero = () => {
       component="section"
       sx={{
         backgroundColor: '#ffffff',
-        py: { xs: 8, md: 12 },
+        py: { xs: 10, md: 14 },
         px: 2,
         textAlign: 'center',
         borderBottom: '1px solid #e5e7eb',
       }}
     >
-      <Container maxWidth="md">
+      <Container maxWidth="lg">
         <Typography
           variant="overline"
           sx={{
             color: '#c5a059',
             fontWeight: 700,
-            letterSpacing: '2px',
-            fontSize: '12px',
+            letterSpacing: '3px',
+            fontSize: '11px',
             display: 'block',
-            mb: 1.5,
+            mb: 2,
           }}
         >
           AUTHENTIC BEAUTY & COSMETICS
@@ -42,7 +39,7 @@ const Hero = () => {
         <Typography
           variant="h1"
           sx={{
-            fontSize: { xs: '32px', sm: '48px', md: '56px' },
+            fontSize: { xs: '30px', sm: '46px', md: '54px' },
             fontWeight: 800,
             color: '#111827',
             textTransform: 'uppercase',
@@ -58,10 +55,10 @@ const Hero = () => {
         <Typography
           variant="h2"
           sx={{
-            fontSize: { xs: '16px', sm: '20px' },
-            fontWeight: 600,
+            fontSize: { xs: '15px', sm: '18px' },
+            fontWeight: 500,
             color: '#4b5563',
-            letterSpacing: '0.5px',
+            letterSpacing: '0.3px',
             marginBottom: 2.5,
           }}
         >
@@ -71,37 +68,28 @@ const Hero = () => {
         <Typography
           variant="body1"
           sx={{
-            fontSize: { xs: '14px', sm: '16px' },
+            fontSize: { xs: '14px', sm: '15px' },
             color: '#6b7280',
-            maxWidth: '620px',
-            margin: '0 auto 36px',
-            lineHeight: 1.6,
+            maxWidth: '580px',
+            margin: '0 auto 40px',
+            lineHeight: 1.7,
           }}
         >
           {BUSINESS_INFO.description}
         </Typography>
 
-        <Box
-          sx={{
-            display: 'flex',
-            justifyContent: 'center',
-            gap: 2,
-            flexWrap: 'wrap',
-          }}
-        >
+        <Box sx={{ display: 'flex', justifyContent: 'center', gap: 2, flexWrap: 'wrap' }}>
           <Button
             onClick={() => navigate('/brands')}
             sx={{
-              padding: '12px 32px',
+              padding: '13px 36px',
               backgroundColor: '#000000',
               color: '#ffffff',
               borderRadius: '4px',
               fontWeight: 700,
               fontSize: '13px',
               letterSpacing: '0.5px',
-              '&:hover': {
-                backgroundColor: '#1f2937',
-              },
+              '&:hover': { backgroundColor: '#1f2937' },
             }}
           >
             EXPLORE BRANDS
@@ -110,17 +98,15 @@ const Hero = () => {
           <Button
             onClick={() => scrollToSection('contact-section')}
             sx={{
-              padding: '12px 32px',
+              padding: '13px 36px',
               backgroundColor: '#ffffff',
               color: '#111827',
-              border: '1px solid #111827',
+              border: '1.5px solid #111827',
               borderRadius: '4px',
               fontWeight: 700,
               fontSize: '13px',
               letterSpacing: '0.5px',
-              '&:hover': {
-                backgroundColor: '#f3f4f6',
-              },
+              '&:hover': { backgroundColor: '#f3f4f6' },
             }}
           >
             VISIT STORE
