@@ -8,39 +8,39 @@ const OurProducts = () => {
       component="section"
       id="products-section"
       sx={{
-        py: { xs: 6, md: 8 },
+        py: { xs: 8, md: 12 },
         px: 2,
-        backgroundColor: '#ffffff',
-        borderBottom: '1px solid #f0f0f0',
+        backgroundColor: '#f9fafb',
+        borderBottom: '1px solid #e5e7eb',
       }}
     >
       <Container maxWidth="lg">
         <Typography
+          variant="overline"
+          sx={{ color: '#c5a059', fontWeight: 700, letterSpacing: '3px', fontSize: '11px', display: 'block', textAlign: 'center', mb: 1 }}
+        >
+          WHAT WE OFFER
+        </Typography>
+        <Typography
           variant="h2"
           sx={{
-            fontSize: '24px',
-            fontWeight: 700,
+            fontSize: { xs: '26px', md: '36px' },
+            fontWeight: 800,
             textAlign: 'center',
-            textTransform: 'uppercase',
-            letterSpacing: '-0.5px',
-            marginBottom: { xs: 4, md: 6 },
-            color: '#000000',
+            fontFamily: "'Playfair Display', serif",
+            color: '#111827',
+            mb: { xs: 5, md: 7 },
+            letterSpacing: '-0.3px',
           }}
         >
-          OUR PRODUCTS
+          Our Products
         </Typography>
 
         <Box
           sx={{
             display: 'grid',
-            gridTemplateColumns: {
-              xs: '1fr',
-              sm: 'repeat(2, 1fr)',
-              lg: 'repeat(4, 1fr)',
-            },
-            gap: '24px',
-            maxWidth: '1200px',
-            margin: '0 auto',
+            gridTemplateColumns: { xs: '1fr 1fr', md: 'repeat(4, 1fr)' },
+            gap: 3,
           }}
         >
           {PRODUCTS.map((product) => (
@@ -49,35 +49,29 @@ const OurProducts = () => {
               sx={{
                 p: 4,
                 textAlign: 'center',
-                backgroundColor: '#f9f9f9',
-                borderRadius: '4px',
-                border: '1px solid #f0f0f0',
-                transition: 'transform 0.2s ease, background-color 0.2s ease',
-                cursor: 'pointer',
+                backgroundColor: '#ffffff',
+                borderRadius: '8px',
+                border: '1px solid #e5e7eb',
+                transition: 'all 0.2s ease',
+                cursor: 'default',
                 '&:hover': {
                   transform: 'translateY(-3px)',
-                  backgroundColor: '#f2f2f2',
+                  boxShadow: '0 8px 24px rgba(0,0,0,0.07)',
+                  borderColor: '#111827',
                 },
               }}
             >
-              <Typography
-                sx={{
-                  fontSize: '40px',
-                  marginBottom: 2,
-                  lineHeight: 1,
-                }}
-              >
+              <Typography sx={{ fontSize: '40px', mb: 2, lineHeight: 1 }}>
                 {product.emoji}
               </Typography>
-
               <Typography
                 variant="h6"
                 sx={{
-                  fontSize: '14px',
+                  fontSize: '13px',
                   fontWeight: 700,
                   textTransform: 'uppercase',
                   letterSpacing: '0.5px',
-                  color: '#000000',
+                  color: '#111827',
                 }}
               >
                 {product.category}

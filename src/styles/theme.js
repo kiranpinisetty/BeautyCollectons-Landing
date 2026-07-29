@@ -2,22 +2,30 @@ import { createTheme } from '@mui/material/styles';
 
 const theme = createTheme({
   palette: {
-    primary: { main: '#000' },
-    secondary: { main: '#fff' },
-    background: { default: '#fff' },
+    mode: 'light',
+    background: {
+      default: '#ffffff',
+      paper: '#ffffff',
+    },
+    primary: {
+      main: '#111827',
+      light: '#374151',
+      dark: '#000000',
+    },
+    secondary: {
+      main: '#c5a059',
+    },
+    text: {
+      primary: '#111827',
+      secondary: '#4b5563',
+    },
   },
   typography: {
-    fontFamily: ['-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'].join(','),
-    h1: { fontWeight: 700, letterSpacing: '-0.5px' },
-    h2: { fontWeight: 700, letterSpacing: '-0.5px' },
-    h6: { fontWeight: 700, letterSpacing: '0.5px' },
-  },
-  components: {
-    MuiButton: {
-      styleOverrides: {
-        root: { borderRadius: '3px', fontWeight: 700, fontSize: '13px', textTransform: 'uppercase' },
-      },
-    },
+    fontFamily: "'Plus Jakarta Sans', -apple-system, sans-serif",
+    h1: { fontFamily: "'Playfair Display', serif" },
+    h2: { fontFamily: "'Playfair Display', serif" },
+    h3: { fontFamily: "'Playfair Display', serif" },
+    h4: { fontFamily: "'Playfair Display', serif" },
   },
 });
 

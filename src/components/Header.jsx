@@ -1,13 +1,21 @@
 import React from 'react';
-import { Box, Typography, Button, Container } from '@mui/material';
+import { Box, Typography, Button, Container, Stack } from '@mui/material';
+import { useNavigate, useLocation } from 'react-router-dom';
 import logo from '../assets/BCLogo.png';
 import { BUSINESS_INFO } from '../data/constants';
 
 const Header = () => {
-  const scrollToSection = (id) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const handleNavClick = (sectionId) => {
+    if (location.pathname !== '/') {
+      navigate('/', { state: { scrollTo: sectionId } });
+    } else {
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
     }
   };
 
@@ -20,8 +28,8 @@ const Header = () => {
         zIndex: 1100,
         backgroundColor: '#000000',
         color: '#ffffff',
+        borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
         padding: '12px 0',
-        borderBottom: '1px solid #333333',
       }}
     >
       <Container maxWidth="lg">
@@ -37,29 +45,29 @@ const Header = () => {
             sx={{
               display: 'flex',
               alignItems: 'center',
-              gap: 2,
+              gap: 1.5,
               cursor: 'pointer',
             }}
-            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            onClick={() => navigate('/')}
           >
             <Box
               component="img"
               src={logo}
               alt={BUSINESS_INFO.name}
               sx={{
-                width: 44,
-                height: 44,
+                width: 40,
+                height: 40,
                 borderRadius: '50%',
                 objectFit: 'cover',
-                border: '1px solid #333333',
+                border: '1px solid #c5a059',
               }}
             />
             <Typography
               variant="h6"
               sx={{
                 fontWeight: 700,
-                fontSize: { xs: '14px', sm: '16px' },
-                letterSpacing: '0.5px',
+                fontSize: { xs: '13px', sm: '15px' },
+                letterSpacing: '0.8px',
                 textTransform: 'uppercase',
                 color: '#ffffff',
               }}
@@ -68,26 +76,51 @@ const Header = () => {
             </Typography>
           </Box>
 
-          {/* Contact Action Button */}
-          <Button
-            variant="contained"
-            onClick={() => scrollToSection('contact-section')}
-            sx={{
-              backgroundColor: '#ffffff',
-              color: '#000000',
-              fontWeight: 700,
-              fontSize: '12px',
-              padding: '8px 24px',
-              borderRadius: '3px',
-              border: '1px solid #ffffff',
-              '&:hover': {
-                backgroundColor: '#e6e6e6',
+          {/* Navigation Action Buttons */}
+          <Stack direction="row" spacing={1.5} alignItems="center">
+            {/* BRANDS Button */}
+            <Button
+              variant={location.pathname === '/brands' ? 'contained' : 'outlined'}
+              onClick={() => navigate('/brands')}
+              sx={{
+                backgroundColor: location.pathname === '/brands' ? '#c5a059' : 'transparent',
+                color: location.pathname === '/brands' ? '#000000' : '#ffffff',
+                borderColor: location.pathname === '/brands' ? '#c5a059' : 'rgba(255,255,255,0.3)',
+                fontWeight: 700,
+                fontSize: '11px',
+                padding: '7px 18px',
+                borderRadius: '4px',
+                letterSpacing: '0.5px',
+                '&:hover': {
+                  backgroundColor: '#c5a059',
+                  color: '#000000',
+                  borderColor: '#c5a059',
+                },
+              }}
+            >
+              BRANDS
+            </Button>
+
+            {/* CONTACT Button */}
+            <Button
+              variant="contained"
+              onClick={() => handleNavClick('contact-section')}
+              sx={{
+                backgroundColor: '#ffffff',
                 color: '#000000',
-              },
-            }}
-          >
-            CONTACT
-          </Button>
+                fontWeight: 700,
+                fontSize: '11px',
+                padding: '7px 18px',
+                borderRadius: '4px',
+                letterSpacing: '0.5px',
+                '&:hover': {
+                  backgroundColor: '#e5e5e5',
+                },
+              }}
+            >
+              CONTACT
+            </Button>
+          </Stack>
         </Box>
       </Container>
     </Box>

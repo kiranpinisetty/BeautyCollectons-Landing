@@ -11,193 +11,117 @@ const ContactSection = () => {
       component="section"
       id="contact-section"
       sx={{
-        py: { xs: 6, md: 8 },
+        py: { xs: 8, md: 12 },
         px: 2,
         backgroundColor: '#ffffff',
-        borderBottom: '1px solid #f0f0f0',
+        borderBottom: '1px solid #e5e7eb',
       }}
     >
       <Container maxWidth="lg">
         <Typography
+          variant="overline"
+          sx={{ color: '#c5a059', fontWeight: 700, letterSpacing: '3px', fontSize: '11px', display: 'block', textAlign: 'center', mb: 1 }}
+        >
+          FIND US
+        </Typography>
+        <Typography
           variant="h2"
           sx={{
-            fontSize: '24px',
-            fontWeight: 700,
+            fontSize: { xs: '26px', md: '36px' },
+            fontWeight: 800,
             textAlign: 'center',
-            textTransform: 'uppercase',
-            letterSpacing: '-0.5px',
-            marginBottom: { xs: 4, md: 6 },
-            color: '#000000',
+            fontFamily: "'Playfair Display', serif",
+            color: '#111827',
+            mb: { xs: 5, md: 7 },
+            letterSpacing: '-0.3px',
           }}
         >
-          VISIT US
+          Visit Us
         </Typography>
 
-        {/* 3-Column Grid Layout */}
         <Box
           sx={{
             display: 'grid',
-            gridTemplateColumns: {
-              xs: '1fr',
-              sm: 'repeat(2, 1fr)',
-              md: 'repeat(3, 1fr)',
-            },
-            gap: '32px',
-            maxWidth: '1200px',
-            margin: '0 auto 48px',
+            gridTemplateColumns: { xs: '1fr', sm: 'repeat(3, 1fr)' },
+            gap: 3,
+            mb: 6,
           }}
         >
-          {/* Location Card */}
-          <Box
-            sx={{
-              p: 3,
-              textAlign: 'center',
-              backgroundColor: '#f9f9f9',
-              borderRadius: '4px',
-              border: '1px solid #f0f0f0',
-            }}
-          >
-            <Typography sx={{ fontSize: '32px', marginBottom: 1.5 }}>📍</Typography>
-            <Typography
-              variant="h6"
-              sx={{
-                fontSize: '14px',
-                fontWeight: 700,
-                textTransform: 'uppercase',
-                letterSpacing: '0.5px',
-                color: '#000000',
-                marginBottom: 1,
-              }}
-            >
-              LOCATION
+          {/* Location */}
+          <Box sx={{ p: 4, textAlign: 'center', backgroundColor: '#f9fafb', borderRadius: '8px', border: '1px solid #e5e7eb' }}>
+            <Typography sx={{ fontSize: '32px', mb: 2 }}>📍</Typography>
+            <Typography variant="h6" sx={{ fontSize: '13px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.5px', color: '#111827', mb: 1.5 }}>
+              Location
             </Typography>
-            <Typography variant="body2" sx={{ fontSize: '12px', color: '#888888', lineHeight: 1.6 }}>
-              {BUSINESS_INFO.location.address}
-              <br />
-              {BUSINESS_INFO.location.road}
-              <br />
-              {BUSINESS_INFO.location.city} - {BUSINESS_INFO.location.zip},{' '}
-              {BUSINESS_INFO.location.state}
+            <Typography variant="body2" sx={{ fontSize: '13px', color: '#6b7280', lineHeight: 1.7 }}>
+              {BUSINESS_INFO.location.address}<br />
+              {BUSINESS_INFO.location.road}<br />
+              {BUSINESS_INFO.location.city} - {BUSINESS_INFO.location.zip}, {BUSINESS_INFO.location.state}
             </Typography>
           </Box>
 
-          {/* Contact Numbers Card */}
-          <Box
-            sx={{
-              p: 3,
-              textAlign: 'center',
-              backgroundColor: '#f9f9f9',
-              borderRadius: '4px',
-              border: '1px solid #f0f0f0',
-            }}
-          >
-            <Typography sx={{ fontSize: '32px', marginBottom: 1.5 }}>📞</Typography>
-            <Typography
-              variant="h6"
-              sx={{
-                fontSize: '14px',
-                fontWeight: 700,
-                textTransform: 'uppercase',
-                letterSpacing: '0.5px',
-                color: '#000000',
-                marginBottom: 1,
-              }}
-            >
-              PHONE
+          {/* Phone */}
+          <Box sx={{ p: 4, textAlign: 'center', backgroundColor: '#f9fafb', borderRadius: '8px', border: '1px solid #e5e7eb' }}>
+            <Typography sx={{ fontSize: '32px', mb: 2 }}>📞</Typography>
+            <Typography variant="h6" sx={{ fontSize: '13px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.5px', color: '#111827', mb: 1.5 }}>
+              Phone
             </Typography>
-            <Typography variant="body2" sx={{ fontSize: '12px', color: '#888888', lineHeight: 1.6 }}>
+            <Typography variant="body2" sx={{ fontSize: '13px', color: '#6b7280', lineHeight: 1.7 }}>
               {BUSINESS_INFO.phone.map((p, idx) => (
                 <React.Fragment key={idx}>
-                  <a href={`tel:${p.number}`} style={{ color: 'inherit' }}>
-                    +91 {p.number}
-                  </a>
+                  <a href={`tel:${p.number}`} style={{ color: 'inherit' }}>+91 {p.number}</a>
                   {idx < BUSINESS_INFO.phone.length - 1 && <br />}
                 </React.Fragment>
               ))}
             </Typography>
           </Box>
 
-          {/* Working Hours Card */}
-          <Box
-            sx={{
-              p: 3,
-              textAlign: 'center',
-              backgroundColor: '#f9f9f9',
-              borderRadius: '4px',
-              border: '1px solid #f0f0f0',
-            }}
-          >
-            <Typography sx={{ fontSize: '32px', marginBottom: 1.5 }}>⏰</Typography>
-            <Typography
-              variant="h6"
-              sx={{
-                fontSize: '14px',
-                fontWeight: 700,
-                textTransform: 'uppercase',
-                letterSpacing: '0.5px',
-                color: '#000000',
-                marginBottom: 1,
-              }}
-            >
-              WORKING HOURS
+          {/* Hours */}
+          <Box sx={{ p: 4, textAlign: 'center', backgroundColor: '#f9fafb', borderRadius: '8px', border: '1px solid #e5e7eb' }}>
+            <Typography sx={{ fontSize: '32px', mb: 2 }}>⏰</Typography>
+            <Typography variant="h6" sx={{ fontSize: '13px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.5px', color: '#111827', mb: 1.5 }}>
+              Working Hours
             </Typography>
-            <Typography variant="body2" sx={{ fontSize: '12px', color: '#888888', lineHeight: 1.6 }}>
-              {BUSINESS_INFO.hours.open} - {BUSINESS_INFO.hours.close}
-              <br />
-              <span style={{ fontWeight: 600, color: '#000000' }}>
-                {BUSINESS_INFO.hours.status}
-              </span>
+            <Typography variant="body2" sx={{ fontSize: '13px', color: '#6b7280', lineHeight: 1.7 }}>
+              {BUSINESS_INFO.hours.open} – {BUSINESS_INFO.hours.close}<br />
+              <span style={{ fontWeight: 700, color: '#111827' }}>{BUSINESS_INFO.hours.status}</span>
             </Typography>
           </Box>
         </Box>
 
         {/* Action Buttons */}
-        <Box
-          sx={{
-            display: 'flex',
-            justifyContent: 'center',
-            gap: 2,
-            flexWrap: 'wrap',
-          }}
-        >
-          {/* CALL NOW Button */}
+        <Box sx={{ display: 'flex', justifyContent: 'center', gap: 2, flexWrap: 'wrap' }}>
           <Button
             component="a"
             href={`tel:${primaryPhone}`}
             sx={{
-              padding: '12px 32px',
+              padding: '13px 36px',
               backgroundColor: '#000000',
               color: '#ffffff',
-              borderRadius: '3px',
+              borderRadius: '4px',
               fontWeight: 700,
               fontSize: '13px',
               letterSpacing: '0.5px',
-              '&:hover': {
-                backgroundColor: '#222222',
-              },
+              '&:hover': { backgroundColor: '#1f2937' },
             }}
           >
             CALL NOW
           </Button>
-
-          {/* MESSAGE US Button */}
           <Button
             component="a"
             href={whatsappUrl}
             target="_blank"
             rel="noopener noreferrer"
             sx={{
-              padding: '12px 32px',
+              padding: '13px 36px',
               backgroundColor: '#ffffff',
-              color: '#000000',
-              border: '1px solid #000000',
-              borderRadius: '3px',
+              color: '#111827',
+              border: '1.5px solid #111827',
+              borderRadius: '4px',
               fontWeight: 700,
               fontSize: '13px',
               letterSpacing: '0.5px',
-              '&:hover': {
-                backgroundColor: '#f5f5f5',
-              },
+              '&:hover': { backgroundColor: '#f3f4f6' },
             }}
           >
             MESSAGE US
