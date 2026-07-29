@@ -13,8 +13,8 @@ const Layout = ({ children }) => {
           minHeight: '100vh',
           display: 'flex',
           flexDirection: 'column',
-          backgroundColor: '#0a0a0a',
-          color: '#f5f5f5',
+          backgroundColor: '#ffffff',
+          color: '#111827',
         }}
       >
         <Header />

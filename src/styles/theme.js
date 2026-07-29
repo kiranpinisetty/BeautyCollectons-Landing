@@ -2,26 +2,26 @@ import { createTheme } from '@mui/material/styles';
 
 const theme = createTheme({
   palette: {
-    mode: 'dark',
+    mode: 'light',
     background: {
-      default: '#0a0a0a',
-      paper: '#141414',
+      default: '#ffffff',
+      paper: '#ffffff',
     },
     primary: {
-      main: '#c9a84c',
-      light: '#e8cc7a',
-      dark: '#9a7a2a',
+      main: '#111827',
+      light: '#374151',
+      dark: '#000000',
     },
     secondary: {
-      main: '#ffffff',
+      main: '#c5a059',
     },
     text: {
-      primary: '#f5f5f5',
-      secondary: '#aaaaaa',
+      primary: '#111827',
+      secondary: '#4b5563',
     },
   },
   typography: {
-    fontFamily: "'Inter', -apple-system, sans-serif",
+    fontFamily: "'Plus Jakarta Sans', -apple-system, sans-serif",
     h1: { fontFamily: "'Playfair Display', serif" },
     h2: { fontFamily: "'Playfair Display', serif" },
     h3: { fontFamily: "'Playfair Display', serif" },

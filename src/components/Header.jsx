@@ -26,10 +26,10 @@ const Header = () => {
         position: 'sticky',
         top: 0,
         zIndex: 1100,
-        backgroundColor: 'rgba(10, 10, 10, 0.85)',
-        backdropFilter: 'blur(16px)',
-        borderBottom: '1px solid rgba(201, 168, 76, 0.2)',
-        padding: '14px 0',
+        backgroundColor: '#000000',
+        color: '#ffffff',
+        borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
+        padding: '12px 0',
       }}
     >
       <Container maxWidth="lg">
@@ -45,7 +45,7 @@ const Header = () => {
             sx={{
               display: 'flex',
               alignItems: 'center',
-              gap: 2,
+              gap: 1.5,
               cursor: 'pointer',
             }}
             onClick={() => navigate('/')}
@@ -55,50 +55,46 @@ const Header = () => {
               src={logo}
               alt={BUSINESS_INFO.name}
               sx={{
-                width: 44,
-                height: 44,
+                width: 40,
+                height: 40,
                 borderRadius: '50%',
                 objectFit: 'cover',
-                border: '2px solid #c9a84c',
-                boxShadow: '0 0 12px rgba(201, 168, 76, 0.4)',
+                border: '1px solid #c5a059',
               }}
             />
             <Typography
               variant="h6"
               sx={{
-                fontWeight: 800,
-                fontSize: { xs: '13px', sm: '16px' },
-                letterSpacing: '1px',
+                fontWeight: 700,
+                fontSize: { xs: '13px', sm: '15px' },
+                letterSpacing: '0.8px',
                 textTransform: 'uppercase',
-                background: 'linear-gradient(135deg, #e8cc7a 0%, #c9a84c 100%)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
+                color: '#ffffff',
               }}
             >
               {BUSINESS_INFO.name}
             </Typography>
           </Box>
 
-          {/* Nav Actions */}
+          {/* Navigation Action Buttons */}
           <Stack direction="row" spacing={1.5} alignItems="center">
             {/* BRANDS Button */}
             <Button
               variant={location.pathname === '/brands' ? 'contained' : 'outlined'}
               onClick={() => navigate('/brands')}
               sx={{
-                backgroundColor: location.pathname === '/brands' ? '#c9a84c' : 'transparent',
-                color: location.pathname === '/brands' ? '#000000' : '#c9a84c',
-                borderColor: '#c9a84c',
+                backgroundColor: location.pathname === '/brands' ? '#c5a059' : 'transparent',
+                color: location.pathname === '/brands' ? '#000000' : '#ffffff',
+                borderColor: location.pathname === '/brands' ? '#c5a059' : 'rgba(255,255,255,0.3)',
                 fontWeight: 700,
-                fontSize: '12px',
-                padding: '8px 20px',
+                fontSize: '11px',
+                padding: '7px 18px',
                 borderRadius: '4px',
-                letterSpacing: '0.8px',
+                letterSpacing: '0.5px',
                 '&:hover': {
-                  backgroundColor: '#e8cc7a',
+                  backgroundColor: '#c5a059',
                   color: '#000000',
-                  borderColor: '#e8cc7a',
-                  boxShadow: '0 0 15px rgba(201, 168, 76, 0.5)',
+                  borderColor: '#c5a059',
                 },
               }}
             >
@@ -113,13 +109,12 @@ const Header = () => {
                 backgroundColor: '#ffffff',
                 color: '#000000',
                 fontWeight: 700,
-                fontSize: '12px',
-                padding: '8px 20px',
+                fontSize: '11px',
+                padding: '7px 18px',
                 borderRadius: '4px',
-                letterSpacing: '0.8px',
+                letterSpacing: '0.5px',
                 '&:hover': {
-                  backgroundColor: '#e0e0e0',
-                  boxShadow: '0 0 15px rgba(255, 255, 255, 0.3)',
+                  backgroundColor: '#e5e5e5',
                 },
               }}
             >

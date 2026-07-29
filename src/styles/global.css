@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;0,900;1,400;1,600&family=Inter:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&display=swap');
 
 *, *::before, *::after {
   box-sizing: border-box;
@@ -7,20 +7,18 @@
 }
 
 :root {
-  --gold: #c9a84c;
-  --gold-light: #e8cc7a;
-  --gold-dark: #9a7a2a;
-  --rose: #e8a0a0;
-  --bg-black: #0a0a0a;
-  --bg-dark: #111111;
-  --bg-card: #181818;
-  --bg-card2: #1e1e1e;
-  --text-primary: #f5f5f5;
-  --text-secondary: #aaaaaa;
-  --text-muted: #666666;
-  --border: rgba(201, 168, 76, 0.18);
-  --border-subtle: rgba(255,255,255,0.07);
-  --glow: rgba(201, 168, 76, 0.15);
+  --bg-primary: #ffffff;
+  --bg-secondary: #f9fafb;
+  --bg-card: #ffffff;
+  --text-dark: #111827;
+  --text-muted: #6b7280;
+  --text-light: #9ca3af;
+  --accent-gold: #c5a059;
+  --accent-gold-dark: #a37f37;
+  --border-light: #e5e7eb;
+  --border-subtle: #f3f4f6;
+  --header-bg: #000000;
+  --footer-bg: #000000;
 }
 
 html {
@@ -28,9 +26,9 @@ html {
 }
 
 body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  background-color: var(--bg-black);
-  color: var(--text-primary);
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-dark);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
@@ -41,64 +39,13 @@ a {
   color: inherit;
 }
 
-/* Custom scrollbars */
 ::-webkit-scrollbar {
   width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #0a0a0a;
+  background: #f1f1f1;
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--gold-dark);
-  border-radius: 6px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: var(--gold);
-}
-
-/* Gradient text utility */
-.gradient-text {
-  background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 50%, var(--gold-dark) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-/* Glassmorphism utility */
-.glass {
-  background: rgba(255, 255, 255, 0.04);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid var(--border-subtle);
-}
-
-/* Section fade-in animation */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(32px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes shimmer {
-  0% { background-position: -200% center; }
-  100% { background-position: 200% center; }
-}
-
-@keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-8px); }
-}
-
-@keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 20px rgba(201, 168, 76, 0.2); }
-  50% { box-shadow: 0 0 40px rgba(201, 168, 76, 0.5); }
-}
-
-.animate-fade-in {
-  animation: fadeInUp 0.7s ease forwards;
+  background: #111827;
+  border-radius: 3px;
 }

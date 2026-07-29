@@ -11,7 +11,7 @@ const Footer = () => {
         color: '#ffffff',
         py: { xs: 5, md: 6 },
         px: 2,
-        borderTop: '0.5px solid #333333',
+        borderTop: '1px solid rgba(255, 255, 255, 0.1)',
         textAlign: 'center',
       }}
     >
@@ -21,22 +21,22 @@ const Footer = () => {
           variant="h6"
           sx={{
             fontWeight: 800,
-            fontSize: '16px',
+            fontSize: '15px',
             textTransform: 'uppercase',
             letterSpacing: '1px',
-            marginBottom: 2,
-            color: '#ffffff',
+            marginBottom: 1.5,
+            color: '#c5a059',
           }}
         >
           {BUSINESS_INFO.name}
         </Typography>
 
-        {/* Tagline / Address subtitle */}
+        {/* Address subtitle */}
         <Typography
           variant="body2"
           sx={{
             fontSize: '12px',
-            color: '#999999',
+            color: '#9ca3af',
             marginBottom: 3,
             maxWidth: '500px',
             margin: '0 auto 24px',
@@ -58,11 +58,11 @@ const Footer = () => {
             rel="noopener noreferrer"
             sx={{
               color: '#ffffff',
-              fontSize: '12px',
+              fontSize: '11px',
               fontWeight: 600,
               letterSpacing: '0.5px',
               textTransform: 'uppercase',
-              '&:hover': { color: '#cccccc' },
+              '&:hover': { color: '#c5a059' },
             }}
           >
             Facebook
@@ -74,11 +74,11 @@ const Footer = () => {
             rel="noopener noreferrer"
             sx={{
               color: '#ffffff',
-              fontSize: '12px',
+              fontSize: '11px',
               fontWeight: 600,
               letterSpacing: '0.5px',
               textTransform: 'uppercase',
-              '&:hover': { color: '#cccccc' },
+              '&:hover': { color: '#c5a059' },
             }}
           >
             Instagram
@@ -90,11 +90,11 @@ const Footer = () => {
             rel="noopener noreferrer"
             sx={{
               color: '#ffffff',
-              fontSize: '12px',
+              fontSize: '11px',
               fontWeight: 600,
               letterSpacing: '0.5px',
               textTransform: 'uppercase',
-              '&:hover': { color: '#cccccc' },
+              '&:hover': { color: '#c5a059' },
             }}
           >
             WhatsApp
@@ -106,7 +106,7 @@ const Footer = () => {
           variant="caption"
           sx={{
             fontSize: '11px',
-            color: '#666666',
+            color: '#6b7280',
             display: 'block',
           }}
         >
