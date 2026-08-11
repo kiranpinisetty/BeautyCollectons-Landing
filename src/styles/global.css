@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Bebas+Neue&display=swap');
 
 *, *::before, *::after {
   box-sizing: border-box;
@@ -7,18 +7,26 @@
 }
 
 :root {
-  --bg-primary: #ffffff;
-  --bg-secondary: #f9fafb;
-  --bg-card: #ffffff;
-  --text-dark: #111827;
-  --text-muted: #6b7280;
-  --text-light: #9ca3af;
-  --accent-gold: #c5a059;
-  --accent-gold-dark: #a37f37;
-  --border-light: #e5e7eb;
-  --border-subtle: #f3f4f6;
-  --header-bg: #000000;
-  --footer-bg: #000000;
+  --black:        #050505;
+  --black-2:      #0b0b0b;
+  --black-3:      #111111;
+  --black-card:   #0e0e0e;
+  --black-hover:  #181818;
+
+  --white:        #f5f0eb;
+  --white-dim:    rgba(245, 240, 235, 0.55);
+  --white-faint:  rgba(245, 240, 235, 0.12);
+
+  --gold:         #c9a96e;
+  --gold-light:   #e8c98a;
+  --gold-dark:    #9a7a3e;
+  --gold-glow:    rgba(201, 169, 110, 0.18);
+  --gold-line:    rgba(201, 169, 110, 0.25);
+
+  --rose:         #b87d8a;
+
+  --border:       rgba(255, 255, 255, 0.07);
+  --border-gold:  rgba(201, 169, 110, 0.22);
 }
 
 html {
@@ -27,8 +35,8 @@ html {
 
 body {
   font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-  background-color: var(--bg-primary);
-  color: var(--text-dark);
+  background-color: var(--black);
+  color: var(--white);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
@@ -39,13 +47,37 @@ a {
   color: inherit;
 }
 
-::-webkit-scrollbar {
-  width: 6px;
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--black); }
+::-webkit-scrollbar-thumb { background: var(--gold-dark); border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: var(--gold); }
+
+/* ─── Utility: editorial section label ─── */
+.section-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--gold);
+  display: block;
+  margin-bottom: 10px;
 }
-::-webkit-scrollbar-track {
-  background: #f1f1f1;
+
+/* ─── Marquee animation ─── */
+@keyframes marquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
-::-webkit-scrollbar-thumb {
-  background: #111827;
-  border-radius: 3px;
+
+/* ─── Fade-up entrance ─── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ─── Gold shimmer on text ─── */
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position:  200% center; }
 }

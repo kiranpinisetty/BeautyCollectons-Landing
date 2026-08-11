@@ -24,126 +24,233 @@ const BrandsPage = () => {
   );
 
   return (
-    <Box sx={{ py: { xs: 8, md: 12 }, px: 2, minHeight: '85vh', backgroundColor: '#f9fafb' }}>
-      <Container maxWidth="lg">
+    <Box
+      sx={{
+        backgroundColor: '#050505',
+        minHeight: '100vh',
+        py: { xs: '72px', md: '100px' },
+        px: 2,
+        position: 'relative',
+        overflow: 'hidden',
+      }}
+    >
+      {/* Ambient glow */}
+      <Box
+        sx={{
+          position: 'absolute',
+          top: '8%',
+          right: '0%',
+          width: '500px',
+          height: '500px',
+          background: 'radial-gradient(ellipse, rgba(201,169,110,0.05) 0%, transparent 70%)',
+          pointerEvents: 'none',
+        }}
+      />
 
-        {/* Page Header */}
-        <Box sx={{ mb: 7 }}>
-          <Button
-            startIcon={<ArrowBackIcon />}
-            onClick={() => navigate('/')}
-            sx={{ color: '#111827', fontWeight: 600, mb: 3, '&:hover': { backgroundColor: 'rgba(0,0,0,0.04)' } }}
-          >
-            Back to Home
-          </Button>
+      <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 1 }}>
 
-          <Typography
-            variant="overline"
-            sx={{ color: '#c5a059', fontWeight: 700, letterSpacing: '3px', fontSize: '11px', display: 'block', mb: 1 }}
-          >
-            WHAT WE STOCK
-          </Typography>
+        {/* ── Back button ── */}
+        <Button
+          startIcon={<ArrowBackIcon />}
+          onClick={() => navigate('/')}
+          sx={{
+            color: 'rgba(245,240,235,0.45)',
+            fontWeight: 600,
+            mb: 5,
+            fontSize: '11px',
+            letterSpacing: '1px',
+            '&:hover': { color: '#c9a96e', backgroundColor: 'transparent' },
+          }}
+        >
+          Back to Home
+        </Button>
 
-          <Typography
-            variant="h2"
-            sx={{
-              fontSize: { xs: '28px', md: '40px' },
-              fontWeight: 800,
-              fontFamily: "'Playfair Display', serif",
-              color: '#111827',
-              mb: 1.5,
-              letterSpacing: '-0.5px',
-            }}
-          >
-            Available Brands
-          </Typography>
+        {/* ── Page header ── */}
+        <Box
+          sx={{
+            display: 'flex',
+            alignItems: { xs: 'flex-start', md: 'flex-end' },
+            justifyContent: 'space-between',
+            flexDirection: { xs: 'column', md: 'row' },
+            gap: 3,
+            mb: { xs: 6, md: 9 },
+          }}
+        >
+          <Box>
+            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, mb: 1.5 }}>
+              <Box sx={{ width: 24, height: '1px', backgroundColor: '#c9a96e' }} />
+              <Typography sx={{ fontSize: '10px', fontWeight: 700, letterSpacing: '4px', color: '#c9a96e', textTransform: 'uppercase' }}>
+                What We Stock
+              </Typography>
+            </Box>
+            <Typography
+              component="h1"
+              sx={{
+                fontFamily: "'Bebas Neue', sans-serif",
+                fontSize: { xs: '52px', md: '80px' },
+                letterSpacing: '2px',
+                color: '#f5f0eb',
+                lineHeight: 0.95,
+                textTransform: 'uppercase',
+                mb: 2,
+              }}
+            >
+              Available Brands
+            </Typography>
+            <Typography
+              sx={{
+                fontSize: '14px',
+                color: 'rgba(245,240,235,0.35)',
+                maxWidth: '500px',
+                lineHeight: 1.8,
+              }}
+            >
+              100% authentic products from world-class beauty brands. Click any brand to explore.
+            </Typography>
+          </Box>
 
-          <Typography variant="body1" sx={{ color: '#6b7280', maxWidth: '600px', fontSize: '15px', lineHeight: 1.7 }}>
-            We carry 100% authentic products from world-class beauty brands. Click on any brand to view available products in our store.
-          </Typography>
-        </Box>
-
-        {/* Search */}
-        <Box sx={{ mb: 6, maxWidth: '460px' }}>
+          {/* Search */}
           <TextField
-            fullWidth
-            placeholder="Search brands..."
+            placeholder="Search brands or categories..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             InputProps={{
               startAdornment: (
                 <InputAdornment position="start">
-                  <SearchIcon sx={{ color: '#9ca3af' }} />
+                  <SearchIcon sx={{ color: 'rgba(245,240,235,0.3)', fontSize: '18px' }} />
                 </InputAdornment>
               ),
               sx: {
-                backgroundColor: '#ffffff',
-                borderRadius: '6px',
-                border: '1px solid #e5e7eb',
+                backgroundColor: '#0e0e0e',
+                border: '1px solid rgba(255,255,255,0.08)',
+                borderRadius: '4px',
+                color: '#f5f0eb',
+                fontSize: '13px',
+                minWidth: { xs: '100%', md: '280px' },
                 '& fieldset': { border: 'none' },
-              }
+                '&:hover': { borderColor: 'rgba(201,169,110,0.3)' },
+                transition: 'border-color 0.2s',
+              },
             }}
+            inputProps={{ style: { color: '#f5f0eb', padding: '12px 14px' } }}
+            sx={{ '& .MuiOutlinedInput-root': { '& fieldset': { border: 'none' } } }}
           />
         </Box>
 
-        {/* Brands Grid */}
-        <Grid container spacing={3}>
+        {/* ── Brands grid ── */}
+        <Grid container spacing={2.5}>
           {filteredBrands.map((brand) => (
             <Grid item xs={12} sm={6} md={4} key={brand.id}>
               <Card
                 onClick={() => setSelectedBrand(brand)}
                 sx={{
-                  backgroundColor: '#ffffff',
-                  border: '1px solid #e5e7eb',
-                  borderRadius: '8px',
+                  backgroundColor: '#0e0e0e',
+                  border: '1px solid rgba(255,255,255,0.07)',
+                  borderRadius: '3px',
                   height: '100%',
                   display: 'flex',
                   flexDirection: 'column',
                   cursor: 'pointer',
-                  boxShadow: '0 1px 4px rgba(0,0,0,0.04)',
-                  transition: 'all 0.25s ease',
+                  boxShadow: 'none',
+                  backgroundImage: 'none',
+                  transition: 'border-color 0.3s, transform 0.3s, box-shadow 0.3s',
+                  position: 'relative',
+                  overflow: 'hidden',
+                  '&::after': {
+                    content: '""',
+                    position: 'absolute',
+                    bottom: 0,
+                    left: 0,
+                    right: 0,
+                    height: '2px',
+                    background: 'linear-gradient(90deg, transparent, #c9a96e, transparent)',
+                    opacity: 0,
+                    transition: 'opacity 0.3s',
+                  },
                   '&:hover': {
-                    transform: 'translateY(-4px)',
-                    borderColor: '#111827',
-                    boxShadow: '0 12px 28px rgba(0,0,0,0.08)',
+                    transform: 'translateY(-6px)',
+                    borderColor: 'rgba(201,169,110,0.2)',
+                    boxShadow: '0 20px 50px rgba(0,0,0,0.6)',
+                    '&::after': { opacity: 1 },
                   },
                 }}
               >
                 <CardContent sx={{ p: 4, flexGrow: 1 }}>
-                  <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', mb: 2 }}>
+                  <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', mb: 2.5 }}>
                     <Typography
                       variant="h5"
-                      sx={{ fontFamily: "'Playfair Display', serif", fontWeight: 700, color: '#111827', fontSize: '20px' }}
+                      sx={{
+                        fontFamily: "'Playfair Display', serif",
+                        fontWeight: 700,
+                        color: '#f5f0eb',
+                        fontSize: '20px',
+                        lineHeight: 1.2,
+                      }}
                     >
                       {brand.name}
                     </Typography>
                     <Chip
-                      icon={<VerifiedIcon sx={{ fontSize: '13px !important', color: '#c5a059 !important' }} />}
+                      icon={<VerifiedIcon sx={{ fontSize: '11px !important', color: '#c9a96e !important' }} />}
                       label={brand.badge}
                       size="small"
-                      sx={{ backgroundColor: '#f3f4f6', color: '#374151', fontWeight: 600, fontSize: '10px', ml: 1 }}
+                      sx={{
+                        backgroundColor: 'rgba(201,169,110,0.08)',
+                        color: '#c9a96e',
+                        fontWeight: 600,
+                        fontSize: '9px',
+                        letterSpacing: '0.5px',
+                        border: '1px solid rgba(201,169,110,0.18)',
+                        ml: 1,
+                        flexShrink: 0,
+                      }}
                     />
                   </Box>
 
-                  <Typography variant="caption" sx={{ color: '#c5a059', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.5px', display: 'block', mb: 1.5 }}>
+                  <Typography
+                    sx={{
+                      fontSize: '9px',
+                      fontWeight: 700,
+                      textTransform: 'uppercase',
+                      letterSpacing: '2px',
+                      color: '#c9a96e',
+                      display: 'block',
+                      mb: 2,
+                    }}
+                  >
                     {brand.category} · {brand.origin}
                   </Typography>
 
-                  <Typography variant="body2" sx={{ color: '#6b7280', fontSize: '13px', lineHeight: 1.6 }}>
+                  <Typography sx={{ color: 'rgba(245,240,235,0.4)', fontSize: '13px', lineHeight: 1.75 }}>
                     {brand.description}
                   </Typography>
                 </CardContent>
 
-                <Box sx={{ px: 4, pb: 3, display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderTop: '1px solid #f3f4f6', pt: 2 }}>
-                  <Typography variant="caption" sx={{ color: '#374151', fontWeight: 700 }}>
-                    {brand.products.length} products stocked
+                <Box
+                  sx={{
+                    px: 4,
+                    pb: 3,
+                    pt: 2,
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    alignItems: 'center',
+                    borderTop: '1px solid rgba(255,255,255,0.05)',
+                  }}
+                >
+                  <Typography sx={{ fontSize: '10px', color: 'rgba(245,240,235,0.25)', fontWeight: 600, letterSpacing: '0.5px' }}>
+                    {brand.products.length} products in store
                   </Typography>
                   <Button
                     size="small"
-                    endIcon={<ArrowForwardIcon />}
-                    sx={{ color: '#111827', fontWeight: 700, fontSize: '11px', '&:hover': { color: '#c5a059', backgroundColor: 'transparent' } }}
+                    endIcon={<ArrowForwardIcon sx={{ fontSize: '13px !important' }} />}
+                    sx={{
+                      color: 'rgba(245,240,235,0.45)',
+                      fontWeight: 700,
+                      fontSize: '10px',
+                      letterSpacing: '1px',
+                      '&:hover': { color: '#c9a96e', backgroundColor: 'transparent' },
+                    }}
                   >
-                    View Products
+                    EXPLORE
                   </Button>
                 </Box>
               </Card>
@@ -151,99 +258,154 @@ const BrandsPage = () => {
           ))}
         </Grid>
 
-        {/* Brand Products Modal */}
+        {/* ── Products modal ── */}
         <Dialog
           open={Boolean(selectedBrand)}
           onClose={() => setSelectedBrand(null)}
           maxWidth="md"
           fullWidth
           PaperProps={{
-            sx: { borderRadius: '10px', backgroundColor: '#ffffff' }
+            sx: {
+              borderRadius: '4px',
+              backgroundColor: '#0e0e0e',
+              border: '1px solid rgba(201,169,110,0.18)',
+              backgroundImage: 'none',
+              boxShadow: '0 32px 80px rgba(0,0,0,0.85)',
+            },
           }}
         >
           {selectedBrand && (
             <>
-              <DialogTitle sx={{ px: 4, pt: 4, pb: 2, display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+              <DialogTitle
+                sx={{
+                  px: 4,
+                  pt: 4,
+                  pb: 2.5,
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'flex-start',
+                }}
+              >
                 <Box>
+                  <Typography
+                    sx={{ fontSize: '10px', fontWeight: 700, letterSpacing: '3px', color: '#c9a96e', textTransform: 'uppercase', mb: 1 }}
+                  >
+                    {selectedBrand.category} · {selectedBrand.origin}
+                  </Typography>
                   <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, mb: 0.5 }}>
                     <Typography
-                      variant="h4"
-                      sx={{ fontFamily: "'Playfair Display', serif", fontWeight: 800, color: '#111827' }}
+                      sx={{
+                        fontFamily: "'Bebas Neue', sans-serif",
+                        fontSize: '36px',
+                        letterSpacing: '2px',
+                        color: '#f5f0eb',
+                        lineHeight: 1,
+                      }}
                     >
                       {selectedBrand.name}
                     </Typography>
                     <Chip
-                      icon={<VerifiedIcon sx={{ fontSize: '13px !important', color: '#c5a059 !important' }} />}
+                      icon={<VerifiedIcon sx={{ fontSize: '11px !important', color: '#c9a96e !important' }} />}
                       label={selectedBrand.badge}
                       size="small"
-                      sx={{ backgroundColor: '#f3f4f6', color: '#374151', fontWeight: 600 }}
+                      sx={{
+                        backgroundColor: 'rgba(201,169,110,0.08)',
+                        color: '#c9a96e',
+                        fontWeight: 600,
+                        fontSize: '9px',
+                        border: '1px solid rgba(201,169,110,0.18)',
+                      }}
                     />
                   </Box>
-                  <Typography variant="body2" sx={{ color: '#6b7280' }}>
-                    {selectedBrand.tagline} · {selectedBrand.origin}
+                  <Typography sx={{ fontSize: '13px', color: 'rgba(245,240,235,0.35)', fontStyle: 'italic', fontFamily: "'Playfair Display', serif" }}>
+                    {selectedBrand.tagline}
                   </Typography>
                 </Box>
-                <IconButton onClick={() => setSelectedBrand(null)} sx={{ color: '#374151', mt: -0.5 }}>
-                  <CloseIcon />
+                <IconButton
+                  onClick={() => setSelectedBrand(null)}
+                  sx={{
+                    color: 'rgba(245,240,235,0.35)',
+                    mt: '-4px',
+                    border: '1px solid rgba(255,255,255,0.08)',
+                    borderRadius: '4px',
+                    '&:hover': { color: '#f5f0eb', borderColor: 'rgba(255,255,255,0.2)' },
+                  }}
+                >
+                  <CloseIcon sx={{ fontSize: '16px' }} />
                 </IconButton>
               </DialogTitle>
 
-              <Divider />
+              <Divider sx={{ borderColor: 'rgba(255,255,255,0.06)' }} />
 
-              <DialogContent sx={{ px: 4, py: 3 }}>
-                <Typography variant="overline" sx={{ color: '#c5a059', fontWeight: 700, letterSpacing: '2px', fontSize: '11px', display: 'block', mb: 3 }}>
-                  AVAILABLE IN STORE — {selectedBrand.products.length} PRODUCTS
+              <DialogContent sx={{ px: 4, py: 3.5 }}>
+                <Typography
+                  sx={{ fontSize: '10px', fontWeight: 700, letterSpacing: '3px', color: '#c9a96e', textTransform: 'uppercase', display: 'block', mb: 3.5 }}
+                >
+                  {selectedBrand.products.length} Products Available In Store
                 </Typography>
 
-                <Grid container spacing={3}>
+                <Grid container spacing={2.5}>
                   {selectedBrand.products.map((product) => (
                     <Grid item xs={12} sm={6} key={product.id}>
                       <Box
                         sx={{
                           p: 3,
-                          borderRadius: '8px',
-                          border: '1px solid #e5e7eb',
-                          backgroundColor: '#fafafa',
+                          borderRadius: '3px',
+                          border: '1px solid rgba(255,255,255,0.07)',
+                          backgroundColor: '#111111',
                           height: '100%',
                           display: 'flex',
                           flexDirection: 'column',
                           justifyContent: 'space-between',
+                          transition: 'border-color 0.2s',
+                          '&:hover': { borderColor: 'rgba(201,169,110,0.2)' },
                         }}
                       >
                         <Box>
-                          <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 1.5 }}>
-                            <Chip label={product.category} size="small" sx={{ backgroundColor: '#ffffff', color: '#374151', border: '1px solid #e5e7eb', fontSize: '10px' }} />
-                            <Rating value={product.rating} precision={0.1} size="small" readOnly sx={{ color: '#c5a059' }} />
+                          <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2 }}>
+                            <Chip
+                              label={product.category}
+                              size="small"
+                              sx={{
+                                backgroundColor: 'rgba(201,169,110,0.07)',
+                                color: '#c9a96e',
+                                border: '1px solid rgba(201,169,110,0.15)',
+                                fontSize: '9px',
+                                letterSpacing: '0.5px',
+                              }}
+                            />
+                            <Rating value={product.rating} precision={0.1} size="small" readOnly sx={{ color: '#c9a96e' }} />
                           </Box>
-                          <Typography variant="subtitle1" sx={{ fontWeight: 700, color: '#111827', mb: 0.5, fontSize: '15px' }}>
+                          <Typography sx={{ fontWeight: 700, color: '#f5f0eb', mb: 0.75, fontSize: '15px', lineHeight: 1.3 }}>
                             {product.name}
                           </Typography>
-                          <Typography variant="body2" sx={{ color: '#6b7280', fontSize: '13px', lineHeight: 1.6, mb: 2 }}>
+                          <Typography sx={{ color: 'rgba(245,240,235,0.4)', fontSize: '13px', lineHeight: 1.7, mb: 2.5 }}>
                             {product.description}
                           </Typography>
                         </Box>
 
-                        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', pt: 2, borderTop: '1px solid #f0f0f0' }}>
-                          <Typography sx={{ color: '#111827', fontWeight: 800, fontSize: '17px' }}>
+                        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', pt: 2.5, borderTop: '1px solid rgba(255,255,255,0.05)' }}>
+                          <Typography sx={{ color: '#c9a96e', fontWeight: 800, fontSize: '17px', letterSpacing: '0.5px' }}>
                             {product.price}
                           </Typography>
                           <Button
                             size="small"
                             variant="contained"
-                            startIcon={<ShoppingBagIcon />}
+                            startIcon={<ShoppingBagIcon sx={{ fontSize: '14px !important' }} />}
                             href={`https://wa.me/919390933899?text=Hi%2C%20is%20${encodeURIComponent(selectedBrand.name + ' – ' + product.name)}%20available%3F`}
                             target="_blank"
                             sx={{
-                              backgroundColor: '#000000',
-                              color: '#ffffff',
-                              fontSize: '11px',
-                              fontWeight: 700,
+                              background: 'linear-gradient(120deg, #e8c98a 0%, #c9a96e 50%, #9a7a3e 100%)',
+                              color: '#050505',
+                              fontSize: '10px',
+                              fontWeight: 800,
+                              letterSpacing: '1px',
                               px: 2.5,
-                              borderRadius: '4px',
-                              '&:hover': { backgroundColor: '#374151' },
+                              borderRadius: '3px',
+                              '&:hover': { boxShadow: '0 4px 16px rgba(201,169,110,0.4)' },
                             }}
                           >
-                            Inquire
+                            INQUIRE
                           </Button>
                         </Box>
                       </Box>

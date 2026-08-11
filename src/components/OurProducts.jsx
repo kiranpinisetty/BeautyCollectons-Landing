@@ -1,63 +1,118 @@
 import React from 'react';
-import { Box, Typography, Container } from '@mui/material';
+import { Box, Typography, Button, Container } from '@mui/material';
 import { PRODUCTS } from '../data/products';
+import { useNavigate } from 'react-router-dom';
 
 const OurProducts = () => {
+  const navigate = useNavigate();
   return (
     <Box
       component="section"
       id="products-section"
       sx={{
-        py: { xs: 8, md: 12 },
+        backgroundColor: '#050505',
+        py: { xs: '72px', md: '112px' },
         px: 2,
-        backgroundColor: '#f9fafb',
-        borderBottom: '1px solid #e5e7eb',
+        borderBottom: '1px solid rgba(255,255,255,0.06)',
+        overflow: 'hidden',
       }}
     >
       <Container maxWidth="lg">
-        <Typography
-          variant="overline"
-          sx={{ color: '#c5a059', fontWeight: 700, letterSpacing: '3px', fontSize: '11px', display: 'block', textAlign: 'center', mb: 1 }}
-        >
-          WHAT WE OFFER
-        </Typography>
-        <Typography
-          variant="h2"
+
+        {/* ── Section header row ── */}
+        <Box
           sx={{
-            fontSize: { xs: '26px', md: '36px' },
-            fontWeight: 800,
-            textAlign: 'center',
-            fontFamily: "'Playfair Display', serif",
-            color: '#111827',
-            mb: { xs: 5, md: 7 },
-            letterSpacing: '-0.3px',
+            display: 'flex',
+            alignItems: { xs: 'flex-start', md: 'flex-end' },
+            justifyContent: 'space-between',
+            flexDirection: { xs: 'column', md: 'row' },
+            gap: 3,
+            mb: { xs: 6, md: 9 },
           }}
         >
-          Our Products
-        </Typography>
+          <Box>
+            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, mb: 1.5 }}>
+              <Box sx={{ width: 24, height: '1px', backgroundColor: '#c9a96e' }} />
+              <Typography sx={{ fontSize: '10px', fontWeight: 700, letterSpacing: '4px', color: '#c9a96e', textTransform: 'uppercase' }}>
+                What We Offer
+              </Typography>
+            </Box>
+            <Typography
+              component="h2"
+              sx={{
+                fontFamily: "'Bebas Neue', sans-serif",
+                fontSize: { xs: '44px', md: '72px' },
+                letterSpacing: '2px',
+                color: '#f5f0eb',
+                lineHeight: 0.95,
+                textTransform: 'uppercase',
+              }}
+            >
+              Our Products
+            </Typography>
+          </Box>
+          <Button
+            onClick={() => navigate('/brands')}
+            sx={{
+              fontSize: '10px',
+              fontWeight: 700,
+              letterSpacing: '2px',
+              color: '#f5f0eb',
+              border: '1px solid rgba(255,255,255,0.18)',
+              borderRadius: '4px',
+              px: 3.5,
+              py: '10px',
+              whiteSpace: 'nowrap',
+              transition: 'border-color 0.2s, color 0.2s',
+              '&:hover': { borderColor: '#c9a96e', color: '#c9a96e' },
+            }}
+          >
+            VIEW ALL BRANDS →
+          </Button>
+        </Box>
 
+        {/* ── Product grid ── */}
         <Box
           sx={{
             display: 'grid',
-            gridTemplateColumns: { xs: '1fr 1fr', md: 'repeat(4, 1fr)' },
-            gap: 3,
+            gridTemplateColumns: { xs: '1fr 1fr', sm: 'repeat(3, 1fr)', md: 'repeat(4, 1fr)' },
+            gap: { xs: 1.5, md: 2 },
           }}
         >
           {PRODUCTS.map((product) => (
             <Box
               key={product.id}
               sx={{
-                p: 4,
+                aspectRatio: '1 / 1.1',
+                backgroundColor: '#0e0e0e',
+                border: '1px solid rgba(255,255,255,0.07)',
+                borderRadius: '3px',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                justifyContent: 'center',
+                p: { xs: 3, md: 4 },
                 textAlign: 'center',
-                backgroundColor: '#ffffff',
-                borderRadius: '8px',
-                border: '1px solid #e5e7eb',
-                transition: 'all 0.2s ease',
                 cursor: 'default',
+                position: 'relative',
+                overflow: 'hidden',
+                transition: 'border-color 0.3s, transform 0.3s, box-shadow 0.3s',
+                '&::after': {
+                  content: '""',
+                  position: 'absolute',
+                  bottom: 0,
+                  left: 0,
+                  right: 0,
+                  height: '2px',
+                  background: 'linear-gradient(90deg, transparent, #c9a96e, transparent)',
+                  opacity: 0,
+                  transition: 'opacity 0.3s ease',
+                },
                 '&:hover': {
-                  transform: 'translateY(-3px)',
-                  boxShadow: '0 8px 24px rgba(0,0,0,0.07)',
-                  borderColor: '#111827',
+                  borderColor: 'rgba(201,169,110,0.22)',
+                  transform: 'translateY(-5px)',
+                  boxShadow: '0 16px 40px rgba(0,0,0,0.5)',
+                  '&::after': { opacity: 1 },
                 },
               }}
             >
@@ -65,13 +120,12 @@ const OurProducts = () => {
                 {product.emoji}
               </Typography>
               <Typography
-                variant="h6"
                 sx={{
-                  fontSize: '13px',
-                  fontWeight: 700,
+                  fontSize: '11px',
+                  fontWeight: 800,
                   textTransform: 'uppercase',
-                  letterSpacing: '0.5px',
-                  color: '#111827',
+                  letterSpacing: '1.5px',
+                  color: '#f5f0eb',
                 }}
               >
                 {product.category}
