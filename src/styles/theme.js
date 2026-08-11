@@ -2,23 +2,27 @@ import { createTheme } from '@mui/material/styles';
 
 const theme = createTheme({
   palette: {
-    mode: 'light',
+    mode: 'dark',
     background: {
-      default: '#ffffff',
-      paper: '#ffffff',
+      default: '#050505',
+      paper: '#0e0e0e',
     },
     primary: {
-      main: '#111827',
-      light: '#374151',
-      dark: '#000000',
+      main: '#c9a96e',
+      light: '#e8c98a',
+      dark: '#9a7a3e',
+      contrastText: '#050505',
     },
     secondary: {
-      main: '#c5a059',
+      main: '#b87d8a',
+      contrastText: '#050505',
     },
     text: {
-      primary: '#111827',
-      secondary: '#4b5563',
+      primary: '#f5f0eb',
+      secondary: 'rgba(245,240,235,0.55)',
+      disabled: 'rgba(245,240,235,0.25)',
     },
+    divider: 'rgba(255,255,255,0.07)',
   },
   typography: {
     fontFamily: "'Plus Jakarta Sans', -apple-system, sans-serif",
@@ -26,6 +30,18 @@ const theme = createTheme({
     h2: { fontFamily: "'Playfair Display', serif" },
     h3: { fontFamily: "'Playfair Display', serif" },
     h4: { fontFamily: "'Playfair Display', serif" },
+  },
+  components: {
+    MuiPaper: {
+      styleOverrides: {
+        root: { backgroundImage: 'none' },
+      },
+    },
+    MuiDialog: {
+      styleOverrides: {
+        paper: { backgroundImage: 'none' },
+      },
+    },
   },
 });
 

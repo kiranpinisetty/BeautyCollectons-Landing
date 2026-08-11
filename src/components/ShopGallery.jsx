@@ -16,58 +16,67 @@ const ShopGallery = ({ images = DEFAULT_IMAGES }) => {
       component="section"
       id="shop-gallery"
       sx={{
-        py: { xs: 8, md: 12 },
+        backgroundColor: '#050505',
+        py: { xs: '72px', md: '112px' },
         px: 2,
-        backgroundColor: '#ffffff',
-        borderBottom: '1px solid #e5e7eb',
+        borderBottom: '1px solid rgba(255,255,255,0.06)',
+        overflow: 'hidden',
       }}
     >
       <Container maxWidth="lg">
-        <Typography
-          variant="overline"
-          sx={{ color: '#c5a059', fontWeight: 700, letterSpacing: '3px', fontSize: '11px', display: 'block', textAlign: 'center', mb: 1 }}
-        >
-          INSIDE OUR STORE
-        </Typography>
-        <Typography
-          variant="h2"
-          sx={{
-            fontSize: { xs: '26px', md: '36px' },
-            fontWeight: 800,
-            textAlign: 'center',
-            fontFamily: "'Playfair Display', serif",
-            color: '#111827',
-            mb: { xs: 5, md: 7 },
-            letterSpacing: '-0.3px',
-          }}
-        >
-          Our Shop
-        </Typography>
 
+        {/* ── Section header ── */}
+        <Box sx={{ mb: { xs: 6, md: 9 }, textAlign: { xs: 'center', md: 'left' } }}>
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, mb: 1.5, justifyContent: { xs: 'center', md: 'flex-start' } }}>
+            <Box sx={{ width: 24, height: '1px', backgroundColor: '#c9a96e' }} />
+            <Typography sx={{ fontSize: '10px', fontWeight: 700, letterSpacing: '4px', color: '#c9a96e', textTransform: 'uppercase' }}>
+              Inside Our Store
+            </Typography>
+          </Box>
+          <Typography
+            component="h2"
+            sx={{
+              fontFamily: "'Bebas Neue', sans-serif",
+              fontSize: { xs: '44px', md: '72px' },
+              letterSpacing: '2px',
+              color: '#f5f0eb',
+              lineHeight: 0.95,
+              textTransform: 'uppercase',
+            }}
+          >
+            Our Shop
+          </Typography>
+        </Box>
+
+        {/* ── Gallery grid ── */}
         <Box
           sx={{
             display: 'grid',
             gridTemplateColumns: { xs: '1fr 1fr', md: 'repeat(4, 1fr)' },
-            gap: 3,
+            gap: { xs: 1.5, md: 2 },
           }}
         >
           {images.map((item, index) => (
             <Box
               key={item.id || index}
               sx={{
-                aspectRatio: '1 / 1',
-                backgroundColor: '#f9fafb',
-                border: '1px solid #e5e7eb',
-                borderRadius: '8px',
+                aspectRatio: '3 / 4',
+                backgroundColor: '#0e0e0e',
+                border: '1px solid rgba(255,255,255,0.07)',
+                borderRadius: '3px',
                 overflow: 'hidden',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                transition: 'all 0.25s ease',
+                transition: 'border-color 0.3s, transform 0.3s, box-shadow 0.3s',
+                position: 'relative',
                 '&:hover': {
-                  transform: 'translateY(-3px)',
-                  boxShadow: '0 8px 24px rgba(0,0,0,0.07)',
-                  borderColor: '#111827',
+                  transform: 'scale(1.02)',
+                  borderColor: 'rgba(201,169,110,0.25)',
+                  boxShadow: '0 16px 48px rgba(0,0,0,0.6)',
+                },
+                '&:hover img': {
+                  filter: 'brightness(1)',
                 },
               }}
             >
@@ -76,12 +85,29 @@ const ShopGallery = ({ images = DEFAULT_IMAGES }) => {
                   component="img"
                   src={item.path}
                   alt={item.alt || `Shop Image ${index + 1}`}
-                  sx={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                  sx={{
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'cover',
+                    filter: 'brightness(0.75)',
+                    transition: 'filter 0.5s ease, transform 0.5s ease',
+                  }}
                 />
               ) : (
-                <Typography variant="body2" sx={{ fontSize: '12px', color: '#9ca3af', textAlign: 'center', p: 2 }}>
-                  Add your shop photo here
-                </Typography>
+                <Box sx={{ textAlign: 'center', p: 3 }}>
+                  <Typography sx={{ fontSize: '28px', mb: 1.5, opacity: 0.15 }}>📷</Typography>
+                  <Typography
+                    sx={{
+                      fontSize: '10px',
+                      color: 'rgba(245,240,235,0.2)',
+                      letterSpacing: '1.5px',
+                      textTransform: 'uppercase',
+                      fontWeight: 600,
+                    }}
+                  >
+                    Coming Soon
+                  </Typography>
+                </Box>
               )}
             </Box>
           ))}

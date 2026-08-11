@@ -2,107 +2,209 @@ import React from 'react';
 import { Box, Typography, Button, Container } from '@mui/material';
 import { BUSINESS_INFO } from '../data/constants';
 
+const CONTACT_CARDS = (info) => [
+  {
+    icon: '📍',
+    label: 'Location',
+    lines: [
+      info.location.address,
+      info.location.road,
+      `${info.location.city} — ${info.location.zip}`,
+      info.location.state,
+    ],
+  },
+  {
+    icon: '📞',
+    label: 'Phone',
+    custom: (
+      <>
+        {info.phone.map((p, i) => (
+          <a key={i} href={`tel:${p.number}`} style={{ color: 'inherit', display: 'block' }}>
+            +91 {p.number}
+          </a>
+        ))}
+      </>
+    ),
+  },
+  {
+    icon: '⏰',
+    label: 'Hours',
+    lines: [
+      `${info.hours.open} — ${info.hours.close}`,
+      info.hours.status,
+    ],
+    highlight: 1, // index of highlighted line
+  },
+];
+
 const ContactSection = () => {
   const primaryPhone = BUSINESS_INFO.phone[0].number;
   const whatsappUrl = BUSINESS_INFO.social.whatsapp;
+  const cards = CONTACT_CARDS(BUSINESS_INFO);
 
   return (
     <Box
       component="section"
       id="contact-section"
       sx={{
-        py: { xs: 8, md: 12 },
+        backgroundColor: '#0b0b0b',
+        py: { xs: '72px', md: '112px' },
         px: 2,
-        backgroundColor: '#ffffff',
-        borderBottom: '1px solid #e5e7eb',
+        borderBottom: '1px solid rgba(255,255,255,0.06)',
+        overflow: 'hidden',
+        position: 'relative',
       }}
     >
-      <Container maxWidth="lg">
-        <Typography
-          variant="overline"
-          sx={{ color: '#c5a059', fontWeight: 700, letterSpacing: '3px', fontSize: '11px', display: 'block', textAlign: 'center', mb: 1 }}
-        >
-          FIND US
-        </Typography>
-        <Typography
-          variant="h2"
-          sx={{
-            fontSize: { xs: '26px', md: '36px' },
-            fontWeight: 800,
-            textAlign: 'center',
-            fontFamily: "'Playfair Display', serif",
-            color: '#111827',
-            mb: { xs: 5, md: 7 },
-            letterSpacing: '-0.3px',
-          }}
-        >
-          Visit Us
-        </Typography>
+      {/* Background gold ambient */}
+      <Box
+        sx={{
+          position: 'absolute',
+          bottom: '-15%',
+          left: '50%',
+          transform: 'translateX(-50%)',
+          width: '700px',
+          height: '500px',
+          background: 'radial-gradient(ellipse, rgba(201,169,110,0.05) 0%, transparent 65%)',
+          pointerEvents: 'none',
+        }}
+      />
 
+      <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 1 }}>
+
+        {/* ── Section header ── */}
+        <Box sx={{ mb: { xs: 6, md: 9 }, textAlign: 'center' }}>
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, mb: 1.5, justifyContent: 'center' }}>
+            <Box sx={{ width: 24, height: '1px', backgroundColor: '#c9a96e' }} />
+            <Typography sx={{ fontSize: '10px', fontWeight: 700, letterSpacing: '4px', color: '#c9a96e', textTransform: 'uppercase' }}>
+              Find Us
+            </Typography>
+            <Box sx={{ width: 24, height: '1px', backgroundColor: '#c9a96e' }} />
+          </Box>
+          <Typography
+            component="h2"
+            sx={{
+              fontFamily: "'Bebas Neue', sans-serif",
+              fontSize: { xs: '52px', md: '84px' },
+              letterSpacing: '3px',
+              color: '#f5f0eb',
+              lineHeight: 0.92,
+              textTransform: 'uppercase',
+            }}
+          >
+            Visit Us
+          </Typography>
+          <Typography
+            sx={{
+              fontFamily: "'Playfair Display', serif",
+              fontStyle: 'italic',
+              fontSize: '15px',
+              color: 'rgba(245,240,235,0.35)',
+              mt: 2,
+            }}
+          >
+            Come experience beauty in person
+          </Typography>
+        </Box>
+
+        {/* ── Info cards ── */}
         <Box
           sx={{
             display: 'grid',
             gridTemplateColumns: { xs: '1fr', sm: 'repeat(3, 1fr)' },
-            gap: 3,
-            mb: 6,
+            gap: { xs: 2, md: 2.5 },
+            mb: 7,
           }}
         >
-          {/* Location */}
-          <Box sx={{ p: 4, textAlign: 'center', backgroundColor: '#f9fafb', borderRadius: '8px', border: '1px solid #e5e7eb' }}>
-            <Typography sx={{ fontSize: '32px', mb: 2 }}>📍</Typography>
-            <Typography variant="h6" sx={{ fontSize: '13px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.5px', color: '#111827', mb: 1.5 }}>
-              Location
-            </Typography>
-            <Typography variant="body2" sx={{ fontSize: '13px', color: '#6b7280', lineHeight: 1.7 }}>
-              {BUSINESS_INFO.location.address}<br />
-              {BUSINESS_INFO.location.road}<br />
-              {BUSINESS_INFO.location.city} - {BUSINESS_INFO.location.zip}, {BUSINESS_INFO.location.state}
-            </Typography>
-          </Box>
+          {cards.map((card) => (
+            <Box
+              key={card.label}
+              sx={{
+                p: { xs: 4, md: 5 },
+                backgroundColor: '#0e0e0e',
+                border: '1px solid rgba(255,255,255,0.07)',
+                borderRadius: '3px',
+                textAlign: 'center',
+                position: 'relative',
+                overflow: 'hidden',
+                transition: 'border-color 0.3s, transform 0.3s',
+                '&::before': {
+                  content: '""',
+                  position: 'absolute',
+                  top: 0,
+                  left: 0,
+                  right: 0,
+                  height: '2px',
+                  background: 'linear-gradient(90deg, transparent, #c9a96e, transparent)',
+                  opacity: 0,
+                  transition: 'opacity 0.3s',
+                },
+                '&:hover': {
+                  borderColor: 'rgba(201,169,110,0.18)',
+                  transform: 'translateY(-5px)',
+                  '&::before': { opacity: 1 },
+                },
+              }}
+            >
+              <Typography sx={{ fontSize: '32px', mb: 2.5, display: 'block' }}>{card.icon}</Typography>
+              <Typography
+                sx={{
+                  fontSize: '10px',
+                  fontWeight: 800,
+                  letterSpacing: '3px',
+                  textTransform: 'uppercase',
+                  color: '#c9a96e',
+                  mb: 2.5,
+                  display: 'block',
+                }}
+              >
+                {card.label}
+              </Typography>
 
-          {/* Phone */}
-          <Box sx={{ p: 4, textAlign: 'center', backgroundColor: '#f9fafb', borderRadius: '8px', border: '1px solid #e5e7eb' }}>
-            <Typography sx={{ fontSize: '32px', mb: 2 }}>📞</Typography>
-            <Typography variant="h6" sx={{ fontSize: '13px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.5px', color: '#111827', mb: 1.5 }}>
-              Phone
-            </Typography>
-            <Typography variant="body2" sx={{ fontSize: '13px', color: '#6b7280', lineHeight: 1.7 }}>
-              {BUSINESS_INFO.phone.map((p, idx) => (
-                <React.Fragment key={idx}>
-                  <a href={`tel:${p.number}`} style={{ color: 'inherit' }}>+91 {p.number}</a>
-                  {idx < BUSINESS_INFO.phone.length - 1 && <br />}
-                </React.Fragment>
-              ))}
-            </Typography>
-          </Box>
-
-          {/* Hours */}
-          <Box sx={{ p: 4, textAlign: 'center', backgroundColor: '#f9fafb', borderRadius: '8px', border: '1px solid #e5e7eb' }}>
-            <Typography sx={{ fontSize: '32px', mb: 2 }}>⏰</Typography>
-            <Typography variant="h6" sx={{ fontSize: '13px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.5px', color: '#111827', mb: 1.5 }}>
-              Working Hours
-            </Typography>
-            <Typography variant="body2" sx={{ fontSize: '13px', color: '#6b7280', lineHeight: 1.7 }}>
-              {BUSINESS_INFO.hours.open} – {BUSINESS_INFO.hours.close}<br />
-              <span style={{ fontWeight: 700, color: '#111827' }}>{BUSINESS_INFO.hours.status}</span>
-            </Typography>
-          </Box>
+              {card.custom ? (
+                <Typography sx={{ fontSize: '13px', color: 'rgba(245,240,235,0.45)', lineHeight: 1.9 }}>
+                  {card.custom}
+                </Typography>
+              ) : (
+                <Box>
+                  {card.lines.map((line, i) => (
+                    <Typography
+                      key={i}
+                      sx={{
+                        fontSize: '13px',
+                        color: card.highlight === i ? '#c9a96e' : 'rgba(245,240,235,0.45)',
+                        fontWeight: card.highlight === i ? 700 : 400,
+                        lineHeight: 1.9,
+                        display: 'block',
+                      }}
+                    >
+                      {line}
+                    </Typography>
+                  ))}
+                </Box>
+              )}
+            </Box>
+          ))}
         </Box>
 
-        {/* Action Buttons */}
+        {/* ── Action buttons ── */}
         <Box sx={{ display: 'flex', justifyContent: 'center', gap: 2, flexWrap: 'wrap' }}>
           <Button
             component="a"
             href={`tel:${primaryPhone}`}
             sx={{
-              padding: '13px 36px',
-              backgroundColor: '#000000',
-              color: '#ffffff',
+              px: { xs: 4, md: 5.5 },
+              py: '13px',
+              background: 'linear-gradient(120deg, #e8c98a 0%, #c9a96e 50%, #9a7a3e 100%)',
+              color: '#050505',
               borderRadius: '4px',
-              fontWeight: 700,
-              fontSize: '13px',
-              letterSpacing: '0.5px',
-              '&:hover': { backgroundColor: '#1f2937' },
+              fontWeight: 800,
+              fontSize: '11px',
+              letterSpacing: '2px',
+              transition: 'box-shadow 0.25s ease, transform 0.25s ease',
+              '&:hover': {
+                boxShadow: '0 8px 32px rgba(201,169,110,0.45)',
+                transform: 'translateY(-2px)',
+              },
             }}
           >
             CALL NOW
@@ -113,18 +215,24 @@ const ContactSection = () => {
             target="_blank"
             rel="noopener noreferrer"
             sx={{
-              padding: '13px 36px',
-              backgroundColor: '#ffffff',
-              color: '#111827',
-              border: '1.5px solid #111827',
+              px: { xs: 4, md: 5.5 },
+              py: '13px',
+              backgroundColor: 'transparent',
+              color: '#f5f0eb',
+              border: '1px solid rgba(255,255,255,0.18)',
               borderRadius: '4px',
               fontWeight: 700,
-              fontSize: '13px',
-              letterSpacing: '0.5px',
-              '&:hover': { backgroundColor: '#f3f4f6' },
+              fontSize: '11px',
+              letterSpacing: '2px',
+              transition: 'border-color 0.25s ease, color 0.25s ease, transform 0.25s ease',
+              '&:hover': {
+                borderColor: '#c9a96e',
+                color: '#c9a96e',
+                transform: 'translateY(-2px)',
+              },
             }}
           >
-            MESSAGE US
+            WHATSAPP US
           </Button>
         </Box>
       </Container>

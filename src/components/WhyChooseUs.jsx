@@ -7,80 +7,108 @@ const WhyChooseUs = () => {
     <Box
       component="section"
       sx={{
-        py: { xs: 8, md: 12 },
+        backgroundColor: '#0b0b0b',
+        py: { xs: '72px', md: '112px' },
         px: 2,
-        backgroundColor: '#ffffff',
-        borderBottom: '1px solid #e5e7eb',
+        borderBottom: '1px solid rgba(255,255,255,0.06)',
+        overflow: 'hidden',
+        position: 'relative',
       }}
     >
       <Container maxWidth="lg">
-        <Typography
-          variant="overline"
-          sx={{ color: '#c5a059', fontWeight: 700, letterSpacing: '3px', fontSize: '11px', display: 'block', textAlign: 'center', mb: 1 }}
-        >
-          OUR PROMISE
-        </Typography>
-        <Typography
-          variant="h2"
-          sx={{
-            fontSize: { xs: '26px', md: '36px' },
-            fontWeight: 800,
-            textAlign: 'center',
-            fontFamily: "'Playfair Display', serif",
-            color: '#111827',
-            mb: { xs: 5, md: 7 },
-            letterSpacing: '-0.3px',
-          }}
-        >
-          Why Choose Us
-        </Typography>
 
+        {/* ── Section header ── */}
+        <Box sx={{ mb: { xs: 6, md: 9 }, display: 'flex', flexDirection: 'column', alignItems: { xs: 'center', md: 'flex-start' }, textAlign: { xs: 'center', md: 'left' } }}>
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, mb: 1.5 }}>
+            <Box sx={{ width: 24, height: '1px', backgroundColor: '#c9a96e' }} />
+            <Typography sx={{ fontSize: '10px', fontWeight: 700, letterSpacing: '4px', color: '#c9a96e', textTransform: 'uppercase' }}>
+              Our Promise
+            </Typography>
+          </Box>
+          <Typography
+            component="h2"
+            sx={{
+              fontFamily: "'Bebas Neue', sans-serif",
+              fontSize: { xs: '44px', md: '72px' },
+              letterSpacing: '2px',
+              color: '#f5f0eb',
+              lineHeight: 0.95,
+              textTransform: 'uppercase',
+            }}
+          >
+            Why Choose Us
+          </Typography>
+        </Box>
+
+        {/* ── Cards grid ── */}
         <Box
           sx={{
             display: 'grid',
             gridTemplateColumns: { xs: '1fr 1fr', md: 'repeat(4, 1fr)' },
-            gap: 3,
+            gap: { xs: 2, md: 3 },
           }}
         >
-          {WHY_CHOOSE_US.map((item) => (
+          {WHY_CHOOSE_US.map((item, idx) => (
             <Box
               key={item.id}
               sx={{
-                p: 4,
-                textAlign: 'center',
-                backgroundColor: '#f9fafb',
-                border: '1px solid #e5e7eb',
-                borderRadius: '8px',
+                p: { xs: 3, md: 4 },
+                backgroundColor: '#0e0e0e',
+                border: '1px solid rgba(255,255,255,0.07)',
+                borderRadius: '3px',
                 display: 'flex',
                 flexDirection: 'column',
-                alignItems: 'center',
+                position: 'relative',
+                overflow: 'hidden',
+                transition: 'border-color 0.3s, transform 0.3s',
+                cursor: 'default',
+                '&::before': {
+                  content: '""',
+                  position: 'absolute',
+                  top: 0,
+                  left: 0,
+                  width: '2px',
+                  height: 0,
+                  backgroundColor: '#c9a96e',
+                  transition: 'height 0.4s ease',
+                },
+                '&:hover': {
+                  borderColor: 'rgba(201,169,110,0.2)',
+                  transform: 'translateY(-6px)',
+                  '&::before': { height: '100%' },
+                },
               }}
             >
-              <Box
+              {/* Index number */}
+              <Typography
                 sx={{
-                  width: '60px',
-                  height: '60px',
-                  borderRadius: '50%',
-                  backgroundColor: '#ffffff',
-                  border: '1px solid #e5e7eb',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  fontSize: '26px',
-                  mb: 2,
+                  fontFamily: "'Bebas Neue', sans-serif",
+                  fontSize: '52px',
+                  color: 'rgba(201,169,110,0.08)',
+                  lineHeight: 1,
+                  mb: 1,
+                  letterSpacing: '2px',
                 }}
               >
-                {item.emoji}
-              </Box>
+                {String(idx + 1).padStart(2, '0')}
+              </Typography>
+
+              <Typography sx={{ fontSize: '28px', mb: 2, lineHeight: 1 }}>{item.emoji}</Typography>
 
               <Typography
-                variant="h6"
-                sx={{ fontSize: '13px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.5px', color: '#111827', mb: 1 }}
+                sx={{
+                  fontSize: '11px',
+                  fontWeight: 800,
+                  textTransform: 'uppercase',
+                  letterSpacing: '1.5px',
+                  color: '#f5f0eb',
+                  mb: 1.5,
+                }}
               >
                 {item.title}
               </Typography>
 
-              <Typography variant="body2" sx={{ fontSize: '13px', color: '#6b7280', lineHeight: 1.6 }}>
+              <Typography sx={{ fontSize: '13px', color: 'rgba(245,240,235,0.4)', lineHeight: 1.75 }}>
                 {item.description}
               </Typography>
             </Box>
