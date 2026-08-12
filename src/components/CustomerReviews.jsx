@@ -7,10 +7,10 @@ const CustomerReviews = () => {
     <Box
       component="section"
       sx={{
-        backgroundColor: '#0b0b0b',
+        backgroundColor: '#FAF8F5',
         py: { xs: '72px', md: '112px' },
         px: 2,
-        borderBottom: '1px solid rgba(255,255,255,0.06)',
+        borderBottom: '1px solid rgba(26,26,26,0.08)',
         overflow: 'hidden',
       }}
     >
@@ -19,8 +19,8 @@ const CustomerReviews = () => {
         {/* ── Section header ── */}
         <Box sx={{ mb: { xs: 6, md: 9 }, textAlign: { xs: 'center', md: 'left' } }}>
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, mb: 1.5, justifyContent: { xs: 'center', md: 'flex-start' } }}>
-            <Box sx={{ width: 24, height: '1px', backgroundColor: '#c9a96e' }} />
-            <Typography sx={{ fontSize: '10px', fontWeight: 700, letterSpacing: '4px', color: '#c9a96e', textTransform: 'uppercase' }}>
+            <Box sx={{ width: 24, height: '1px', backgroundColor: '#7A1F3D' }} />
+            <Typography sx={{ fontSize: '10px', fontWeight: 700, letterSpacing: '4px', color: '#7A1F3D', textTransform: 'uppercase' }}>
               Testimonials
             </Typography>
           </Box>
@@ -30,7 +30,7 @@ const CustomerReviews = () => {
               fontFamily: "'Bebas Neue', sans-serif",
               fontSize: { xs: '44px', md: '72px' },
               letterSpacing: '2px',
-              color: '#f5f0eb',
+              color: '#1A1A1A',
               lineHeight: 0.95,
               textTransform: 'uppercase',
             }}
@@ -52,18 +52,20 @@ const CustomerReviews = () => {
               key={review.id}
               sx={{
                 p: { xs: 3.5, md: 4 },
-                backgroundColor: '#0e0e0e',
-                border: '1px solid rgba(255,255,255,0.07)',
+                backgroundColor: '#FFFFFF',
+                border: '1px solid rgba(26,26,26,0.08)',
                 borderRadius: '3px',
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'space-between',
                 position: 'relative',
                 overflow: 'hidden',
-                transition: 'border-color 0.3s, transform 0.3s',
+                boxShadow: '0 2px 12px rgba(26,26,26,0.05)',
+                transition: 'border-color 0.3s, transform 0.3s, box-shadow 0.3s',
                 '&:hover': {
-                  borderColor: 'rgba(201,169,110,0.2)',
+                  borderColor: 'rgba(122,31,61,0.2)',
                   transform: 'translateY(-5px)',
+                  boxShadow: '0 10px 32px rgba(26,26,26,0.1)',
                 },
               }}
             >
@@ -75,7 +77,7 @@ const CustomerReviews = () => {
                   right: '16px',
                   fontFamily: "'Playfair Display', serif",
                   fontSize: '80px',
-                  color: 'rgba(201,169,110,0.06)',
+                  color: 'rgba(122,31,61,0.06)',
                   lineHeight: 1,
                   userSelect: 'none',
                   pointerEvents: 'none',
@@ -85,15 +87,15 @@ const CustomerReviews = () => {
               </Typography>
 
               <Box sx={{ position: 'relative', zIndex: 1 }}>
-                {/* Stars */}
-                <Typography sx={{ fontSize: '13px', color: '#c9a96e', letterSpacing: '3px', mb: 2.5, display: 'block' }}>
+                {/* Burgundy stars */}
+                <Typography sx={{ fontSize: '13px', color: '#7A1F3D', letterSpacing: '3px', mb: 2.5, display: 'block' }}>
                   {'★'.repeat(review.rating)}{'☆'.repeat(5 - review.rating)}
                 </Typography>
                 {/* Text */}
                 <Typography
                   sx={{
                     fontSize: '13px',
-                    color: 'rgba(245,240,235,0.55)',
+                    color: 'rgba(26,26,26,0.6)',
                     fontStyle: 'italic',
                     fontFamily: "'Playfair Display', serif",
                     lineHeight: 1.8,
@@ -105,17 +107,17 @@ const CustomerReviews = () => {
               </Box>
 
               {/* Reviewer */}
-              <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, borderTop: '1px solid rgba(255,255,255,0.06)', pt: 2.5 }}>
+              <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, borderTop: '1px solid rgba(26,26,26,0.07)', pt: 2.5 }}>
                 <Box
                   sx={{
                     width: 36,
                     height: 36,
                     borderRadius: '50%',
-                    background: 'linear-gradient(135deg, #c9a96e, #9a7a3e)',
+                    background: 'linear-gradient(135deg, #7A1F3D, #4A1024)',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    color: '#050505',
+                    color: '#FAF8F5',
                     fontWeight: 800,
                     fontSize: '14px',
                     flexShrink: 0,
@@ -125,12 +127,12 @@ const CustomerReviews = () => {
                   {review.name.charAt(0)}
                 </Box>
                 <Box>
-                  <Typography sx={{ fontSize: '12px', fontWeight: 700, color: '#f5f0eb', lineHeight: 1.3, letterSpacing: '0.5px' }}>
+                  <Typography sx={{ fontSize: '12px', fontWeight: 700, color: '#1A1A1A', lineHeight: 1.3, letterSpacing: '0.5px' }}>
                     {review.name}
                   </Typography>
                   {review.verified && (
-                    <Typography sx={{ fontSize: '10px', color: '#4ade80', fontWeight: 600, letterSpacing: '0.3px' }}>
-                      ✓ Verified Purchase
+                    <Typography sx={{ fontSize: '10px', color: '#7A1F3D', fontWeight: 600, letterSpacing: '0.3px' }}>
+                      ✓ Verified Customer
                     </Typography>
                   )}
                 </Box>

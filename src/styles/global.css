@@ -7,26 +7,40 @@
 }
 
 :root {
-  --black:        #050505;
-  --black-2:      #0b0b0b;
-  --black-3:      #111111;
-  --black-card:   #0e0e0e;
-  --black-hover:  #181818;
+  /* ── Light backgrounds ── */
+  --ivory:          #FAF8F5;     /* primary section bg */
+  --ivory-2:        #F5F2EE;     /* alternate section bg */
+  --ivory-3:        #EDE9E4;     /* deeper accent bg */
+  --card-bg:        #FFFFFF;     /* card surfaces */
+  --card-bg-alt:    #FDF9F6;     /* warm off-white cards */
 
-  --white:        #f5f0eb;
-  --white-dim:    rgba(245, 240, 235, 0.55);
-  --white-faint:  rgba(245, 240, 235, 0.12);
+  /* ── Dark text ── */
+  --charcoal:       #1A1A1A;     /* primary headings / nav */
+  --charcoal-dim:   rgba(26, 26, 26, 0.55);
+  --charcoal-faint: rgba(26, 26, 26, 0.35);
+  --charcoal-ghost: rgba(26, 26, 26, 0.15);
 
-  --gold:         #c9a96e;
-  --gold-light:   #e8c98a;
-  --gold-dark:    #9a7a3e;
-  --gold-glow:    rgba(201, 169, 110, 0.18);
-  --gold-line:    rgba(201, 169, 110, 0.25);
+  /* ── Burgundy palette (unchanged) ── */
+  --burgundy:       #7A1F3D;
+  --burgundy-light: #9B2D52;
+  --burgundy-dark:  #4A1024;
+  --burgundy-glow:  rgba(122, 31, 61, 0.12);
+  --burgundy-line:  rgba(122, 31, 61, 0.22);
+  --burgundy-faint: rgba(122, 31, 61, 0.07);
 
-  --rose:         #b87d8a;
+  /* ── Champagne / warm beige accent ── */
+  --champagne:      #C8A882;
+  --champagne-faint: rgba(200, 168, 130, 0.15);
 
-  --border:       rgba(255, 255, 255, 0.07);
-  --border-gold:  rgba(201, 169, 110, 0.22);
+  /* ── Muted gray ── */
+  --muted:          #9A9290;
+
+  /* ── Borders ── */
+  --border:         rgba(26, 26, 26, 0.09);
+  --border-burg:    rgba(122, 31, 61, 0.18);
+
+  /* ── Footer (keeps dark) ── */
+  --footer-bg:      #16100F;
 }
 
 html {
@@ -35,8 +49,8 @@ html {
 
 body {
   font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-  background-color: var(--black);
-  color: var(--white);
+  background-color: var(--ivory);
+  color: var(--charcoal);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
@@ -49,9 +63,9 @@ a {
 
 /* Custom scrollbar */
 ::-webkit-scrollbar { width: 5px; }
-::-webkit-scrollbar-track { background: var(--black); }
-::-webkit-scrollbar-thumb { background: var(--gold-dark); border-radius: 2px; }
-::-webkit-scrollbar-thumb:hover { background: var(--gold); }
+::-webkit-scrollbar-track { background: var(--ivory-2); }
+::-webkit-scrollbar-thumb { background: var(--burgundy-dark); border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: var(--burgundy); }
 
 /* ─── Utility: editorial section label ─── */
 .section-label {
@@ -59,7 +73,7 @@ a {
   font-weight: 700;
   letter-spacing: 4px;
   text-transform: uppercase;
-  color: var(--gold);
+  color: var(--burgundy);
   display: block;
   margin-bottom: 10px;
 }
@@ -76,7 +90,20 @@ a {
   to   { opacity: 1; transform: translateY(0); }
 }
 
-/* ─── Gold shimmer on text ─── */
+/* ─── Float animations for hero cosmetics ─── */
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  33%       { transform: translateY(-8px) rotate(1deg); }
+  66%       { transform: translateY(-4px) rotate(-0.5deg); }
+}
+
+@keyframes floatAlt {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  33%       { transform: translateY(-6px) rotate(-1deg); }
+  66%       { transform: translateY(-10px) rotate(0.5deg); }
+}
+
+/* ─── Shimmer on text ─── */
 @keyframes shimmer {
   0%   { background-position: -200% center; }
   100% { background-position:  200% center; }

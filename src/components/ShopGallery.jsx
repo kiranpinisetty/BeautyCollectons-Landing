@@ -16,10 +16,10 @@ const ShopGallery = ({ images = DEFAULT_IMAGES }) => {
       component="section"
       id="shop-gallery"
       sx={{
-        backgroundColor: '#050505',
+        backgroundColor: '#F5F2EE',
         py: { xs: '72px', md: '112px' },
         px: 2,
-        borderBottom: '1px solid rgba(255,255,255,0.06)',
+        borderBottom: '1px solid rgba(26,26,26,0.08)',
         overflow: 'hidden',
       }}
     >
@@ -28,8 +28,8 @@ const ShopGallery = ({ images = DEFAULT_IMAGES }) => {
         {/* ── Section header ── */}
         <Box sx={{ mb: { xs: 6, md: 9 }, textAlign: { xs: 'center', md: 'left' } }}>
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, mb: 1.5, justifyContent: { xs: 'center', md: 'flex-start' } }}>
-            <Box sx={{ width: 24, height: '1px', backgroundColor: '#c9a96e' }} />
-            <Typography sx={{ fontSize: '10px', fontWeight: 700, letterSpacing: '4px', color: '#c9a96e', textTransform: 'uppercase' }}>
+            <Box sx={{ width: 24, height: '1px', backgroundColor: '#7A1F3D' }} />
+            <Typography sx={{ fontSize: '10px', fontWeight: 700, letterSpacing: '4px', color: '#7A1F3D', textTransform: 'uppercase' }}>
               Inside Our Store
             </Typography>
           </Box>
@@ -39,7 +39,7 @@ const ShopGallery = ({ images = DEFAULT_IMAGES }) => {
               fontFamily: "'Bebas Neue', sans-serif",
               fontSize: { xs: '44px', md: '72px' },
               letterSpacing: '2px',
-              color: '#f5f0eb',
+              color: '#1A1A1A',
               lineHeight: 0.95,
               textTransform: 'uppercase',
             }}
@@ -61,22 +61,23 @@ const ShopGallery = ({ images = DEFAULT_IMAGES }) => {
               key={item.id || index}
               sx={{
                 aspectRatio: '3 / 4',
-                backgroundColor: '#0e0e0e',
-                border: '1px solid rgba(255,255,255,0.07)',
+                backgroundColor: '#EDE9E4',
+                border: '1px solid rgba(26,26,26,0.08)',
                 borderRadius: '3px',
                 overflow: 'hidden',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
+                boxShadow: '0 2px 12px rgba(26,26,26,0.06)',
                 transition: 'border-color 0.3s, transform 0.3s, box-shadow 0.3s',
                 position: 'relative',
                 '&:hover': {
                   transform: 'scale(1.02)',
-                  borderColor: 'rgba(201,169,110,0.25)',
-                  boxShadow: '0 16px 48px rgba(0,0,0,0.6)',
+                  borderColor: 'rgba(122,31,61,0.22)',
+                  boxShadow: '0 16px 40px rgba(26,26,26,0.14)',
                 },
                 '&:hover img': {
-                  filter: 'brightness(1)',
+                  filter: 'brightness(0.88)',
                 },
               }}
             >
@@ -89,18 +90,25 @@ const ShopGallery = ({ images = DEFAULT_IMAGES }) => {
                     width: '100%',
                     height: '100%',
                     objectFit: 'cover',
-                    filter: 'brightness(0.75)',
+                    filter: 'brightness(0.8)',
                     transition: 'filter 0.5s ease, transform 0.5s ease',
                   }}
                 />
               ) : (
                 <Box sx={{ textAlign: 'center', p: 3 }}>
-                  <Typography sx={{ fontSize: '28px', mb: 1.5, opacity: 0.15 }}>📷</Typography>
+                  {/* Camera icon SVG */}
+                  <Box sx={{ opacity: 0.18, mb: 1.5, display: 'flex', justifyContent: 'center' }}>
+                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <rect x="3" y="9" width="26" height="18" rx="2" stroke="#1A1A1A" strokeWidth="1.5"/>
+                      <circle cx="16" cy="18" r="5" stroke="#1A1A1A" strokeWidth="1.5"/>
+                      <path d="M11 9L13 5H19L21 9" stroke="#1A1A1A" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </Box>
                   <Typography
                     sx={{
                       fontSize: '10px',
-                      color: 'rgba(245,240,235,0.2)',
-                      letterSpacing: '1.5px',
+                      color: 'rgba(26,26,26,0.3)',
+                      letterSpacing: '2px',
                       textTransform: 'uppercase',
                       fontWeight: 600,
                     }}

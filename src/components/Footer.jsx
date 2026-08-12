@@ -13,20 +13,20 @@ const Footer = () => {
     <Box
       component="footer"
       sx={{
-        backgroundColor: '#050505',
-        color: '#f5f0eb',
-        borderTop: '1px solid rgba(201,169,110,0.15)',
+        backgroundColor: '#16100F',
+        color: '#FAF8F5',
+        borderTop: '1px solid rgba(122,31,61,0.2)',
         position: 'relative',
         overflow: 'hidden',
       }}
     >
-      {/* ── Top gold accent line ── */}
+      {/* ── Top burgundy accent line ── */}
       <Box
         sx={{
           width: '100%',
           height: '1px',
-          background: 'linear-gradient(90deg, transparent 0%, #c9a96e 40%, #c9a96e 60%, transparent 100%)',
-          opacity: 0.3,
+          background: 'linear-gradient(90deg, transparent 0%, #7A1F3D 40%, #7A1F3D 60%, transparent 100%)',
+          opacity: 0.4,
         }}
       />
 
@@ -48,7 +48,7 @@ const Footer = () => {
                 fontFamily: "'Bebas Neue', sans-serif",
                 fontSize: '32px',
                 letterSpacing: '3px',
-                color: '#f5f0eb',
+                color: '#FAF8F5',
                 lineHeight: 1,
                 mb: 1,
               }}
@@ -60,7 +60,7 @@ const Footer = () => {
                 fontFamily: "'Playfair Display', serif",
                 fontStyle: 'italic',
                 fontSize: '13px',
-                color: '#c9a96e',
+                color: '#9B2D52',
                 mb: 3,
                 letterSpacing: '0.3px',
               }}
@@ -70,7 +70,7 @@ const Footer = () => {
             <Typography
               sx={{
                 fontSize: '12px',
-                color: 'rgba(245,240,235,0.28)',
+                color: 'rgba(250,248,245,0.3)',
                 lineHeight: 1.85,
                 maxWidth: '240px',
               }}
@@ -87,7 +87,7 @@ const Footer = () => {
                 fontSize: '10px',
                 fontWeight: 700,
                 letterSpacing: '3px',
-                color: '#c9a96e',
+                color: '#7A1F3D',
                 textTransform: 'uppercase',
                 mb: 3,
                 display: 'block',
@@ -100,13 +100,13 @@ const Footer = () => {
                 key={link}
                 sx={{
                   fontSize: '12px',
-                  color: 'rgba(245,240,235,0.35)',
+                  color: 'rgba(250,248,245,0.35)',
                   mb: 1.5,
                   display: 'block',
                   letterSpacing: '0.5px',
                   cursor: 'pointer',
                   transition: 'color 0.2s',
-                  '&:hover': { color: '#c9a96e' },
+                  '&:hover': { color: '#9B2D52' },
                 }}
               >
                 {link}
@@ -121,7 +121,7 @@ const Footer = () => {
                 fontSize: '10px',
                 fontWeight: 700,
                 letterSpacing: '3px',
-                color: '#c9a96e',
+                color: '#7A1F3D',
                 textTransform: 'uppercase',
                 mb: 3,
                 display: 'block',
@@ -138,13 +138,13 @@ const Footer = () => {
                 rel="noopener noreferrer"
                 sx={{
                   fontSize: '12px',
-                  color: 'rgba(245,240,235,0.35)',
+                  color: 'rgba(250,248,245,0.35)',
                   display: 'block',
                   mb: 1.5,
                   letterSpacing: '0.5px',
                   textDecoration: 'none',
                   transition: 'color 0.2s',
-                  '&:hover': { color: '#c9a96e' },
+                  '&:hover': { color: '#9B2D52' },
                 }}
               >
                 {label}
@@ -159,13 +159,13 @@ const Footer = () => {
                   href={`tel:${p.number}`}
                   sx={{
                     fontSize: '12px',
-                    color: 'rgba(245,240,235,0.35)',
+                    color: 'rgba(250,248,245,0.35)',
                     display: 'block',
                     mb: 1,
                     letterSpacing: '0.5px',
                     textDecoration: 'none',
                     transition: 'color 0.2s',
-                    '&:hover': { color: '#c9a96e' },
+                    '&:hover': { color: '#9B2D52' },
                   }}
                 >
                   +91 {p.number}
@@ -178,7 +178,7 @@ const Footer = () => {
         {/* ── Bottom bar ── */}
         <Box
           sx={{
-            borderTop: '1px solid rgba(255,255,255,0.06)',
+            borderTop: '1px solid rgba(250,248,245,0.06)',
             py: { xs: 3, md: 4 },
             display: 'flex',
             alignItems: 'center',
@@ -187,7 +187,7 @@ const Footer = () => {
             gap: 2,
           }}
         >
-          <Typography sx={{ fontSize: '11px', color: 'rgba(245,240,235,0.2)', letterSpacing: '0.5px' }}>
+          <Typography sx={{ fontSize: '11px', color: 'rgba(250,248,245,0.2)', letterSpacing: '0.5px' }}>
             © {new Date().getFullYear()} {BUSINESS_INFO.name}. All rights reserved.
           </Typography>
           <Box
@@ -197,11 +197,11 @@ const Footer = () => {
               gap: 1,
             }}
           >
-            <Box sx={{ width: 20, height: '1px', backgroundColor: '#c9a96e', opacity: 0.4 }} />
-            <Typography sx={{ fontSize: '9px', color: 'rgba(201,169,110,0.4)', letterSpacing: '2px', textTransform: 'uppercase' }}>
+            <Box sx={{ width: 20, height: '1px', backgroundColor: '#7A1F3D', opacity: 0.45 }} />
+            <Typography sx={{ fontSize: '9px', color: 'rgba(122,31,61,0.5)', letterSpacing: '2px', textTransform: 'uppercase' }}>
               Beauty Within Everyone's Reach
             </Typography>
-            <Box sx={{ width: 20, height: '1px', backgroundColor: '#c9a96e', opacity: 0.4 }} />
+            <Box sx={{ width: 20, height: '1px', backgroundColor: '#7A1F3D', opacity: 0.45 }} />
           </Box>
         </Box>
       </Container>
