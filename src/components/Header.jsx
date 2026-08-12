@@ -24,7 +24,6 @@ const Header = () => {
     }
   };
 
-  const isHome = location.pathname === '/';
   const isBrands = location.pathname === '/brands';
 
   return (
@@ -34,10 +33,10 @@ const Header = () => {
         position: 'sticky',
         top: 0,
         zIndex: 1100,
-        backgroundColor: scrolled ? 'rgba(5,5,5,0.97)' : '#050505',
+        backgroundColor: scrolled ? 'rgba(250,248,245,0.97)' : '#FAF8F5',
         backdropFilter: scrolled ? 'blur(16px)' : 'none',
         WebkitBackdropFilter: scrolled ? 'blur(16px)' : 'none',
-        borderBottom: '1px solid rgba(255,255,255,0.06)',
+        borderBottom: '1px solid rgba(26,26,26,0.09)',
         transition: 'background-color 0.35s ease, backdrop-filter 0.35s ease',
         py: '14px',
       }}
@@ -65,10 +64,12 @@ const Header = () => {
                 height: 38,
                 borderRadius: '50%',
                 objectFit: 'cover',
-                filter: 'grayscale(1) brightness(1.25) contrast(1.05)',
-                border: '1px solid rgba(201,169,110,0.35)',
-                transition: 'filter 0.3s ease',
-                '&:hover': { filter: 'grayscale(0.5) brightness(1.1)' },
+                border: '1px solid rgba(122,31,61,0.3)',
+                transition: 'border-color 0.3s ease, box-shadow 0.3s ease',
+                '&:hover': {
+                  borderColor: 'rgba(122,31,61,0.6)',
+                  boxShadow: '0 0 10px rgba(122,31,61,0.18)',
+                },
               }}
             />
             <Box>
@@ -77,7 +78,7 @@ const Header = () => {
                   fontFamily: "'Bebas Neue', sans-serif",
                   fontSize: { xs: '16px', sm: '19px' },
                   letterSpacing: '2.5px',
-                  color: '#f5f0eb',
+                  color: '#1A1A1A',
                   lineHeight: 1,
                 }}
               >
@@ -86,7 +87,7 @@ const Header = () => {
               <Typography
                 sx={{
                   fontSize: '8px',
-                  color: '#c9a96e',
+                  color: '#7A1F3D',
                   letterSpacing: '3px',
                   textTransform: 'uppercase',
                   display: { xs: 'none', sm: 'block' },
@@ -120,7 +121,7 @@ const Header = () => {
                   fontSize: '10px',
                   fontWeight: 700,
                   letterSpacing: '2px',
-                  color: 'rgba(245,240,235,0.6)',
+                  color: 'rgba(26,26,26,0.55)',
                   cursor: 'pointer',
                   transition: 'color 0.2s',
                   position: 'relative',
@@ -131,11 +132,11 @@ const Header = () => {
                     left: 0,
                     width: 0,
                     height: '1px',
-                    background: '#c9a96e',
+                    background: '#7A1F3D',
                     transition: 'width 0.25s ease',
                   },
                   '&:hover': {
-                    color: '#f5f0eb',
+                    color: '#1A1A1A',
                     '&::after': { width: '100%' },
                   },
                 }}
@@ -155,34 +156,34 @@ const Header = () => {
                 fontSize: '10px',
                 fontWeight: 700,
                 letterSpacing: '1.5px',
-                color: isBrands ? '#050505' : 'rgba(245,240,235,0.7)',
-                backgroundColor: isBrands ? '#c9a96e' : 'transparent',
-                border: '1px solid rgba(255,255,255,0.12)',
+                color: isBrands ? '#FAF8F5' : 'rgba(26,26,26,0.65)',
+                backgroundColor: isBrands ? '#7A1F3D' : 'transparent',
+                border: '1px solid rgba(26,26,26,0.15)',
                 borderRadius: '4px',
                 px: 2,
                 py: '7px',
-                '&:hover': { backgroundColor: '#c9a96e', color: '#050505', borderColor: '#c9a96e' },
+                '&:hover': { backgroundColor: '#7A1F3D', color: '#FAF8F5', borderColor: '#7A1F3D' },
               }}
             >
               BRANDS
             </Button>
 
-            {/* Visit store pill */}
+            {/* Visit store CTA */}
             <Button
               onClick={() => handleNavClick('contact-section')}
               sx={{
                 fontSize: '10px',
                 fontWeight: 700,
                 letterSpacing: '1.5px',
-                color: '#050505',
-                background: 'linear-gradient(120deg, #e8c98a 0%, #c9a96e 50%, #9a7a3e 100%)',
+                color: '#FAF8F5',
+                backgroundColor: '#7A1F3D',
                 borderRadius: '4px',
                 px: { xs: 2, sm: 2.5 },
                 py: '8px',
-                transition: 'opacity 0.2s ease, box-shadow 0.2s ease',
+                transition: 'background-color 0.2s ease, box-shadow 0.2s ease',
                 '&:hover': {
-                  opacity: 0.9,
-                  boxShadow: '0 4px 20px rgba(201,169,110,0.45)',
+                  backgroundColor: '#9B2D52',
+                  boxShadow: '0 4px 20px rgba(122,31,61,0.35)',
                 },
               }}
             >

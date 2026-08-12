@@ -2,9 +2,30 @@ import React from 'react';
 import { Box, Typography, Button, Container } from '@mui/material';
 import { BUSINESS_INFO } from '../data/constants';
 
+// SVG Icons
+const LocationIcon = () => (
+  <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M16 3C11.582 3 8 6.582 8 11C8 17.5 16 29 16 29C16 29 24 17.5 24 11C24 6.582 20.418 3 16 3Z" stroke="#7A1F3D" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+    <circle cx="16" cy="11" r="3" stroke="#7A1F3D" strokeWidth="1.5"/>
+  </svg>
+);
+
+const PhoneIcon = () => (
+  <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M6 7C6 6.448 6.448 6 7 6H11.5C11.865 6 12.197 6.215 12.342 6.553L14.342 11.053C14.504 11.424 14.398 11.858 14.078 12.109L12.202 13.568C13.476 16.137 15.548 18.209 18.117 19.483L19.576 17.607C19.827 17.287 20.261 17.181 20.632 17.343L25.132 19.343C25.47 19.488 25.685 19.82 25.685 20.185V24.685C25.685 25.237 25.237 25.685 24.685 25.685C13.313 25.685 4 16.372 4 5C4 4.448 4.448 4 5 4H6V7Z" stroke="#7A1F3D" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+  </svg>
+);
+
+const ClockIcon = () => (
+  <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="16" cy="16" r="11" stroke="#7A1F3D" strokeWidth="1.5"/>
+    <path d="M16 10V16L20 19" stroke="#7A1F3D" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+  </svg>
+);
+
 const CONTACT_CARDS = (info) => [
   {
-    icon: '📍',
+    Icon: LocationIcon,
     label: 'Location',
     lines: [
       info.location.address,
@@ -14,7 +35,7 @@ const CONTACT_CARDS = (info) => [
     ],
   },
   {
-    icon: '📞',
+    Icon: PhoneIcon,
     label: 'Phone',
     custom: (
       <>
@@ -27,13 +48,13 @@ const CONTACT_CARDS = (info) => [
     ),
   },
   {
-    icon: '⏰',
+    Icon: ClockIcon,
     label: 'Hours',
     lines: [
       `${info.hours.open} — ${info.hours.close}`,
       info.hours.status,
     ],
-    highlight: 1, // index of highlighted line
+    highlight: 1,
   },
 ];
 
@@ -47,15 +68,15 @@ const ContactSection = () => {
       component="section"
       id="contact-section"
       sx={{
-        backgroundColor: '#0b0b0b',
+        backgroundColor: '#F5F2EE',
         py: { xs: '72px', md: '112px' },
         px: 2,
-        borderBottom: '1px solid rgba(255,255,255,0.06)',
+        borderBottom: '1px solid rgba(26,26,26,0.08)',
         overflow: 'hidden',
         position: 'relative',
       }}
     >
-      {/* Background gold ambient */}
+      {/* Soft burgundy ambient */}
       <Box
         sx={{
           position: 'absolute',
@@ -64,7 +85,7 @@ const ContactSection = () => {
           transform: 'translateX(-50%)',
           width: '700px',
           height: '500px',
-          background: 'radial-gradient(ellipse, rgba(201,169,110,0.05) 0%, transparent 65%)',
+          background: 'radial-gradient(ellipse, rgba(122,31,61,0.04) 0%, transparent 65%)',
           pointerEvents: 'none',
         }}
       />
@@ -74,11 +95,11 @@ const ContactSection = () => {
         {/* ── Section header ── */}
         <Box sx={{ mb: { xs: 6, md: 9 }, textAlign: 'center' }}>
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, mb: 1.5, justifyContent: 'center' }}>
-            <Box sx={{ width: 24, height: '1px', backgroundColor: '#c9a96e' }} />
-            <Typography sx={{ fontSize: '10px', fontWeight: 700, letterSpacing: '4px', color: '#c9a96e', textTransform: 'uppercase' }}>
+            <Box sx={{ width: 24, height: '1px', backgroundColor: '#7A1F3D' }} />
+            <Typography sx={{ fontSize: '10px', fontWeight: 700, letterSpacing: '4px', color: '#7A1F3D', textTransform: 'uppercase' }}>
               Find Us
             </Typography>
-            <Box sx={{ width: 24, height: '1px', backgroundColor: '#c9a96e' }} />
+            <Box sx={{ width: 24, height: '1px', backgroundColor: '#7A1F3D' }} />
           </Box>
           <Typography
             component="h2"
@@ -86,7 +107,7 @@ const ContactSection = () => {
               fontFamily: "'Bebas Neue', sans-serif",
               fontSize: { xs: '52px', md: '84px' },
               letterSpacing: '3px',
-              color: '#f5f0eb',
+              color: '#1A1A1A',
               lineHeight: 0.92,
               textTransform: 'uppercase',
             }}
@@ -98,7 +119,7 @@ const ContactSection = () => {
               fontFamily: "'Playfair Display', serif",
               fontStyle: 'italic',
               fontSize: '15px',
-              color: 'rgba(245,240,235,0.35)',
+              color: 'rgba(26,26,26,0.4)',
               mt: 2,
             }}
           >
@@ -120,13 +141,14 @@ const ContactSection = () => {
               key={card.label}
               sx={{
                 p: { xs: 4, md: 5 },
-                backgroundColor: '#0e0e0e',
-                border: '1px solid rgba(255,255,255,0.07)',
+                backgroundColor: '#FFFFFF',
+                border: '1px solid rgba(26,26,26,0.08)',
                 borderRadius: '3px',
                 textAlign: 'center',
                 position: 'relative',
                 overflow: 'hidden',
-                transition: 'border-color 0.3s, transform 0.3s',
+                boxShadow: '0 2px 12px rgba(26,26,26,0.05)',
+                transition: 'border-color 0.3s, transform 0.3s, box-shadow 0.3s',
                 '&::before': {
                   content: '""',
                   position: 'absolute',
@@ -134,25 +156,29 @@ const ContactSection = () => {
                   left: 0,
                   right: 0,
                   height: '2px',
-                  background: 'linear-gradient(90deg, transparent, #c9a96e, transparent)',
+                  background: 'linear-gradient(90deg, transparent, #7A1F3D, transparent)',
                   opacity: 0,
                   transition: 'opacity 0.3s',
                 },
                 '&:hover': {
-                  borderColor: 'rgba(201,169,110,0.18)',
+                  borderColor: 'rgba(122,31,61,0.18)',
                   transform: 'translateY(-5px)',
+                  boxShadow: '0 12px 36px rgba(26,26,26,0.1)',
                   '&::before': { opacity: 1 },
                 },
               }}
             >
-              <Typography sx={{ fontSize: '32px', mb: 2.5, display: 'block' }}>{card.icon}</Typography>
+              {/* SVG icon */}
+              <Box sx={{ display: 'flex', justifyContent: 'center', mb: 2.5 }}>
+                <card.Icon />
+              </Box>
               <Typography
                 sx={{
                   fontSize: '10px',
                   fontWeight: 800,
                   letterSpacing: '3px',
                   textTransform: 'uppercase',
-                  color: '#c9a96e',
+                  color: '#7A1F3D',
                   mb: 2.5,
                   display: 'block',
                 }}
@@ -161,7 +187,7 @@ const ContactSection = () => {
               </Typography>
 
               {card.custom ? (
-                <Typography sx={{ fontSize: '13px', color: 'rgba(245,240,235,0.45)', lineHeight: 1.9 }}>
+                <Typography sx={{ fontSize: '13px', color: 'rgba(26,26,26,0.5)', lineHeight: 1.9 }}>
                   {card.custom}
                 </Typography>
               ) : (
@@ -171,7 +197,7 @@ const ContactSection = () => {
                       key={i}
                       sx={{
                         fontSize: '13px',
-                        color: card.highlight === i ? '#c9a96e' : 'rgba(245,240,235,0.45)',
+                        color: card.highlight === i ? '#7A1F3D' : 'rgba(26,26,26,0.5)',
                         fontWeight: card.highlight === i ? 700 : 400,
                         lineHeight: 1.9,
                         display: 'block',
@@ -194,15 +220,16 @@ const ContactSection = () => {
             sx={{
               px: { xs: 4, md: 5.5 },
               py: '13px',
-              background: 'linear-gradient(120deg, #e8c98a 0%, #c9a96e 50%, #9a7a3e 100%)',
-              color: '#050505',
+              backgroundColor: '#7A1F3D',
+              color: '#FAF8F5',
               borderRadius: '4px',
               fontWeight: 800,
               fontSize: '11px',
               letterSpacing: '2px',
-              transition: 'box-shadow 0.25s ease, transform 0.25s ease',
+              transition: 'background-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease',
               '&:hover': {
-                boxShadow: '0 8px 32px rgba(201,169,110,0.45)',
+                backgroundColor: '#9B2D52',
+                boxShadow: '0 8px 32px rgba(122,31,61,0.35)',
                 transform: 'translateY(-2px)',
               },
             }}
@@ -218,16 +245,16 @@ const ContactSection = () => {
               px: { xs: 4, md: 5.5 },
               py: '13px',
               backgroundColor: 'transparent',
-              color: '#f5f0eb',
-              border: '1px solid rgba(255,255,255,0.18)',
+              color: '#1A1A1A',
+              border: '1px solid rgba(26,26,26,0.22)',
               borderRadius: '4px',
               fontWeight: 700,
               fontSize: '11px',
               letterSpacing: '2px',
               transition: 'border-color 0.25s ease, color 0.25s ease, transform 0.25s ease',
               '&:hover': {
-                borderColor: '#c9a96e',
-                color: '#c9a96e',
+                borderColor: '#7A1F3D',
+                color: '#7A1F3D',
                 transform: 'translateY(-2px)',
               },
             }}
