@@ -7,40 +7,61 @@
 }
 
 :root {
-  /* ── Light backgrounds ── */
-  --ivory:          #FAF8F5;     /* primary section bg */
-  --ivory-2:        #F5F2EE;     /* alternate section bg */
-  --ivory-3:        #EDE9E4;     /* deeper accent bg */
-  --card-bg:        #FFFFFF;     /* card surfaces */
-  --card-bg-alt:    #FDF9F6;     /* warm off-white cards */
+  /* ── "Editorial Warm" background layers ── */
+  --paper:          #F7EFE1;     /* primary section bg  — replaces --ivory    */
+  --paper-2:        #F1E5D0;     /* alternate section bg — replaces --ivory-2  */
+  --paper-3:        #EDE0C8;     /* deeper accent bg    — replaces --ivory-3  */
+  --card-bg:        #FFFFFF;     /* card surfaces (unchanged)                 */
+  --card-bg-alt:    #FAF4EB;     /* warm off-white cards — replaces #FDF9F6   */
 
-  /* ── Dark text ── */
-  --charcoal:       #1A1A1A;     /* primary headings / nav */
-  --charcoal-dim:   rgba(26, 26, 26, 0.55);
-  --charcoal-faint: rgba(26, 26, 26, 0.35);
-  --charcoal-ghost: rgba(26, 26, 26, 0.15);
+  /* ── Ink (dark text) ── */
+  --ink:            #241B14;     /* primary headings / nav — replaces --charcoal    */
+  --ink-dim:        rgba(36, 27, 20, 0.55);   /* replaces --charcoal-dim   */
+  --ink-faint:      rgba(36, 27, 20, 0.35);   /* replaces --charcoal-faint */
+  --ink-ghost:      rgba(36, 27, 20, 0.15);   /* replaces --charcoal-ghost */
 
-  /* ── Burgundy palette (unchanged) ── */
-  --burgundy:       #7A1F3D;
-  --burgundy-light: #9B2D52;
-  --burgundy-dark:  #4A1024;
-  --burgundy-glow:  rgba(122, 31, 61, 0.12);
-  --burgundy-line:  rgba(122, 31, 61, 0.22);
-  --burgundy-faint: rgba(122, 31, 61, 0.07);
+  /* ── Maroon (primary accent) ── replaces all --burgundy-* ──────── */
+  --maroon:         #5C1A1A;
+  --maroon-light:   color-mix(in srgb, #5C1A1A 80%, #F7EFE1);   /* ≈ #7A3535 */
+  --maroon-dark:    color-mix(in srgb, #5C1A1A 80%, #000000);    /* ≈ #3B1010 */
+  --maroon-glow:    rgba(92, 26, 26, 0.12);
+  --maroon-line:    rgba(92, 26, 26, 0.22);
+  --maroon-faint:   rgba(92, 26, 26, 0.07);
 
-  /* ── Champagne / warm beige accent ── */
-  --champagne:      #C8A882;
-  --champagne-faint: rgba(200, 168, 130, 0.15);
+  /* ── Marigold (rare highlight — use max once per section) ── */
+  --marigold:       #E08A1E;
 
-  /* ── Muted gray ── */
-  --muted:          #9A9290;
+  /* ── Gold (borders, dividers, line strokes only — never fill) ── */
+  --gold:           #B8862E;     /* replaces --champagne as a line/border accent */
+  --gold-faint:     rgba(184, 134, 46, 0.15);
 
-  /* ── Borders ── */
-  --border:         rgba(26, 26, 26, 0.09);
-  --border-burg:    rgba(122, 31, 61, 0.18);
+  /* ── Muted warm gray ── */
+  --muted:          #9A8E84;     /* slightly warmer than the old #9A9290       */
 
-  /* ── Footer (keeps dark) ── */
-  --footer-bg:      #16100F;
+  /* ── Dividers / borders (soft warm) ── */
+  --cream-line:     rgba(36, 27, 20, 0.14);   /* replaces all solid grays/shadows */
+  --border:         var(--cream-line);
+  --border-accent:  rgba(92, 26, 26, 0.18);   /* replaces --border-burg           */
+
+  /* ── Footer (dark, slightly warmer undertone) ── */
+  --footer-bg:      #1A100C;     /* was #16100F — shifted 1 stop warmer       */
+
+  /* ── Legacy aliases (kept for any legacy class usage, point to new values) ── */
+  --ivory:          var(--paper);
+  --ivory-2:        var(--paper-2);
+  --ivory-3:        var(--paper-3);
+  --charcoal:       var(--ink);
+  --charcoal-dim:   var(--ink-dim);
+  --charcoal-faint: var(--ink-faint);
+  --charcoal-ghost: var(--cream-line);
+  --burgundy:       var(--maroon);
+  --burgundy-light: var(--maroon-light);
+  --burgundy-dark:  var(--maroon-dark);
+  --burgundy-glow:  var(--maroon-glow);
+  --burgundy-line:  var(--maroon-line);
+  --burgundy-faint: var(--maroon-faint);
+  --champagne:      var(--gold);
+  --champagne-faint: var(--gold-faint);
 }
 
 html {
@@ -49,8 +70,8 @@ html {
 
 body {
   font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-  background-color: var(--ivory);
-  color: var(--charcoal);
+  background-color: var(--paper);
+  color: var(--ink);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
@@ -63,9 +84,9 @@ a {
 
 /* Custom scrollbar */
 ::-webkit-scrollbar { width: 5px; }
-::-webkit-scrollbar-track { background: var(--ivory-2); }
-::-webkit-scrollbar-thumb { background: var(--burgundy-dark); border-radius: 2px; }
-::-webkit-scrollbar-thumb:hover { background: var(--burgundy); }
+::-webkit-scrollbar-track { background: var(--paper-2); }
+::-webkit-scrollbar-thumb { background: var(--maroon-dark); border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: var(--maroon); }
 
 /* ─── Utility: editorial section label ─── */
 .section-label {
@@ -73,7 +94,7 @@ a {
   font-weight: 700;
   letter-spacing: 4px;
   text-transform: uppercase;
-  color: var(--burgundy);
+  color: var(--maroon);
   display: block;
   margin-bottom: 10px;
 }
